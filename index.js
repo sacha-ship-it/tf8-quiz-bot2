@@ -1,21 +1,17 @@
-const { Client, GatewayIntentBits, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js')
+const { Client, GatewayIntentBits, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, REST, Routes, SlashCommandBuilder } = require('discord.js')
 const questions = require('./questions')
 
 const TOKEN = process.env.TOKEN
 const CHANNEL_ID = process.env.QUIZ_CHANNEL_ID
+const CLIENT_ID = process.env.CLIENT_ID
 
 const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent
-  ]
+  intents: [GatewayIntentBits.Guilds]
 })
 
 let scores = {}
 
-async function startQuiz() {
-  const channel = await client.channels.fetch(CHANNEL_ID)
+async function startQuiz(channel) {
   scores = {}
 
   await channel.send({
@@ -96,27 +92,31 @@ async function startQuiz() {
   })
 }
 
-client.on('ready', () => {
+// Enregistrer la commande slash
+async function registerCommands() {
+  const commands = [
+    new SlashCommandBuilder()
+      .setName('quiz')
+      .setDescription('Lance le quiz trading de la semaine')
+      .toJSON()
+  ]
+
+  const rest = new REST({ version: '10' }).setToken(TOKEN)
+  await rest.put(Routes.applicationCommands(CLIENT_ID), { body: commands })
+  console.log('✅ Commande /quiz enregistrée')
+}
+
+client.on('ready', async () => {
   console.log(`✅ Bot connecté : ${client.user.tag}`)
-  setInterval(() => {
-    const now = new Date()
-    if (now.getDay() === 5 && now.getHours() === 16 && now.getMinutes() === 0) {
-      startQuiz()
-    }
-  }, 60000)
+  await registerCommands()
 })
 
-client.on('messageCreate', async msg => {
-  console.log(`Message reçu: "${msg.content}" de ${msg.author.username}`)
-  if (msg.content === '!quiz') {
-    console.log('Commande quiz détectée !')
-    if (msg.member?.permissions.has('Administrator')) {
-      console.log('Admin confirmé, lancement du quiz...')
-      startQuiz()
-    } else {
-      console.log('Pas admin !')
-      msg.reply('❌ Tu dois être admin pour lancer le quiz.')
-    }
+client.on('interactionCreate', async interaction => {
+  if (!interaction.isChatInputCommand()) return
+  if (interaction.commandName === 'quiz') {
+    await interaction.reply({ content: '🧠 Le quiz démarre dans le canal dédié !', ephemeral: true })
+    const channel = await client.channels.fetch(CHANNEL_ID)
+    startQuiz(channel)
   }
 })
 
