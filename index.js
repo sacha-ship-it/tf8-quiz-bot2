@@ -107,8 +107,16 @@ client.on('ready', () => {
 })
 
 client.on('messageCreate', async msg => {
-  if (msg.content === '!quiz' && msg.member?.permissions.has('Administrator')) {
-    startQuiz()
+  console.log(`Message reçu: "${msg.content}" de ${msg.author.username}`)
+  if (msg.content === '!quiz') {
+    console.log('Commande quiz détectée !')
+    if (msg.member?.permissions.has('Administrator')) {
+      console.log('Admin confirmé, lancement du quiz...')
+      startQuiz()
+    } else {
+      console.log('Pas admin !')
+      msg.reply('❌ Tu dois être admin pour lancer le quiz.')
+    }
   }
 })
 
