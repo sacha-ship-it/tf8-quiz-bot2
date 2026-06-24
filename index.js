@@ -9,107 +9,141 @@ const client = new Client({
   intents: [GatewayIntentBits.Guilds]
 })
 
-let scores = {}
 let quizRunning = false
+const participantScores = {}
 
-async function startQuiz(announcementChannel) {
-  if (quizRunning) {
-    await announcementChannel.send({ content: '⚠️ Un quiz est déjà en cours !', ephemeral: false })
-    return
+async function sendQuestionsToParticipant(interaction) {
+  const userId = interaction.user.id
+  const username = interaction.user.username
+
+  if (!participantScores[userId]) {
+    participantScores[userId] = { username, score: 0, correct: 0, wrong: 0 }
   }
-
-  quizRunning = true
-  scores = {}
-
-  // Message d'annonce visible par tout le monde
-  await announcementChannel.send({
-    embeds: [new EmbedBuilder()
-      .setTitle('🧠 QUIZ TRADING — DANS 30 SECONDES !')
-      .setDescription('Préparez-vous ! Vous avez **10 secondes** par question.\n\n🔒 Les questions et réponses sont **privées** — visible uniquement par vous !\n\nCliquez sur le bouton ci-dessous pour participer 👇')
-      .setColor('#FFD700')]
-  })
-
-  await new Promise(r => setTimeout(r, 30000))
 
   for (let i = 0; i < questions.length; i++) {
     const q = questions[i]
-    const answered = new Set()
 
     const row = new ActionRowBuilder().addComponents(
-      new ButtonBuilder().setCustomId(`q${i}_A`).setLabel('A').setStyle(ButtonStyle.Primary),
-      new ButtonBuilder().setCustomId(`q${i}_B`).setLabel('B').setStyle(ButtonStyle.Primary),
-      new ButtonBuilder().setCustomId(`q${i}_C`).setLabel('C').setStyle(ButtonStyle.Primary),
-      new ButtonBuilder().setCustomId(`q${i}_D`).setLabel('D').setStyle(ButtonStyle.Primary),
+      new ButtonBuilder().setCustomId(`q${i}_A_${userId}`).setLabel('A').setStyle(ButtonStyle.Primary),
+      new ButtonBuilder().setCustomId(`q${i}_B_${userId}`).setLabel('B').setStyle(ButtonStyle.Primary),
+      new ButtonBuilder().setCustomId(`q${i}_C_${userId}`).setLabel('C').setStyle(ButtonStyle.Primary),
+      new ButtonBuilder().setCustomId(`q${i}_D_${userId}`).setLabel('D').setStyle(ButtonStyle.Primary),
     )
 
-    // La question est éphémère — visible uniquement par la personne qui interagit
-    await announcementChannel.send({
-      content: `**❓ Question ${i + 1} / ${questions.length}**\n\n${q.question}\n\n${q.choices.join('\n')}\n\n⏱️ *10 secondes !*`,
-      components: [row]
+    // Envoyer la question en éphémère — visible uniquement par cette personne
+    await interaction.followUp({
+      embeds: [new EmbedBuilder()
+        .setTitle(`❓ Question ${i + 1} / ${questions.length}`)
+        .setDescription(q.question + '\n\n' + q.choices.join('\n'))
+        .setColor('#0099ff')
+        .setFooter({ text: '⏱️ 10 secondes pour répondre !' })],
+      components: [row],
+      ephemeral: true
     })
 
     const startTime = Date.now()
 
-    // Collecteur d'interactions sur le canal
-    const collector = announcementChannel.createMessageComponentCollector({ time: 10000 })
+    // Attendre que la personne réponde avant de passer à la suite
+    await new Promise(resolve => {
+      const filter = i2 => i2.customId.endsWith(`_${userId}`) && i2.user.id === userId
+      const collector = interaction.channel.createMessageComponentCollector({ filter, time: 10000, max: 1 })
 
-    collector.on('collect', async interaction => {
-      if (answered.has(interaction.user.id)) {
-        return interaction.reply({
-          content: '❌ Tu as déjà répondu à cette question !',
-          ephemeral: true
-        })
-      }
+      collector.on('collect', async i2 => {
+        const choice = i2.customId.split('_')[1]
+        const speed = Math.max(0, Math.round((10000 - (Date.now() - startTime)) / 1000))
 
-      answered.add(interaction.user.id)
-      const choice = interaction.customId.split('_')[1]
-      const speed = Math.max(0, Math.round((10000 - (Date.now() - startTime)) / 1000))
+        if (choice === q.answer) {
+          const pts = 10 + speed
+          participantScores[userId].score += pts
+          participantScores[userId].correct += 1
+          await i2.reply({
+            content: `✅ Bonne réponse ! **+${pts} pts** (dont +${speed} pts rapidité)`,
+            ephemeral: true
+          })
+        } else {
+          participantScores[userId].wrong += 1
+          await i2.reply({
+            content: `❌ Mauvaise réponse ! La bonne réponse était **${q.answer}** — ${q.choices.find(c => c.startsWith(q.answer))}`,
+            ephemeral: true
+          })
+        }
 
-      if (!scores[interaction.user.id]) {
-        scores[interaction.user.id] = { username: interaction.user.username, score: 0, correct: 0, wrong: 0 }
-      }
+        collector.stop()
+      })
 
-      if (choice === q.answer) {
-        const pts = 10 + speed
-        scores[interaction.user.id].score += pts
-        scores[interaction.user.id].correct += 1
-        await interaction.reply({
-          content: `✅ Bonne réponse ! **+${pts} pts** (dont +${speed} pts rapidité)`,
-          ephemeral: true
-        })
-      } else {
-        scores[interaction.user.id].wrong += 1
-        await interaction.reply({
-          content: `❌ Mauvaise réponse ! La bonne réponse était **${q.answer}** — ${q.choices.find(c => c.startsWith(q.answer))}`,
-          ephemeral: true
-        })
-      }
+      collector.on('end', () => resolve())
     })
-
-    await new Promise(r => setTimeout(r, 11000))
-    collector.stop()
   }
 
-  // Classement final visible par tout le monde
-  const top = Object.entries(scores)
-    .sort((a, b) => b[1].score - a[1].score)
-    .slice(0, 10)
-
-  const medals = ['🥇', '🥈', '🥉']
-  const classement = top.length
-    ? top.map(([id, data], i) =>
-        `${medals[i] || `${i + 1}.`} **${data.username}** — ${data.score} pts (${data.correct} bonnes / ${data.wrong} mauvaises)`
-      ).join('\n')
-    : 'Aucun participant cette semaine.'
-
-  await announcementChannel.send({
+  await interaction.followUp({
     embeds: [new EmbedBuilder()
-      .setTitle('🏆 CLASSEMENT FINAL DU QUIZ')
-      .setDescription(classement)
-      .setColor('#FFD700')]
+      .setTitle('✅ Tu as terminé le quiz !')
+      .setDescription(`**Score : ${participantScores[userId].score} pts**\n✅ ${participantScores[userId].correct} bonnes réponses\n❌ ${participantScores[userId].wrong} mauvaises réponses`)
+      .setColor('#00FF00')],
+    ephemeral: true
+  })
+}
+
+async function startQuiz(commandInteraction) {
+  if (quizRunning) {
+    await commandInteraction.reply({ content: '⚠️ Un quiz est déjà en cours !', ephemeral: true })
+    return
+  }
+
+  quizRunning = true
+  Object.keys(participantScores).forEach(k => delete participantScores[k])
+
+  const channel = await client.channels.fetch(CHANNEL_ID)
+
+  // Bouton "Commencer le questionnaire" visible par tout le monde
+  const startRow = new ActionRowBuilder().addComponents(
+    new ButtonBuilder()
+      .setCustomId('start_quiz')
+      .setLabel('🧠 Commencer le questionnaire')
+      .setStyle(ButtonStyle.Success)
+  )
+
+  await channel.send({
+    embeds: [new EmbedBuilder()
+      .setTitle('🧠 QUIZ TRADING — PRÊTS ?')
+      .setDescription('Le quiz de la semaine est disponible !\n\n🔒 Les questions sont **privées** — personne ne voit tes réponses.\n\nClique sur le bouton ci-dessous pour commencer 👇\n\n⏱️ Tu as **10 secondes** par question. Tu dois répondre à chaque question avant de passer à la suivante.')
+      .setColor('#FFD700')],
+    components: [startRow]
   })
 
-  quizRunning = false
+  await commandInteraction.reply({ content: '✅ Le quiz a été lancé dans le canal dédié !', ephemeral: true })
+
+  // Attendre que les gens cliquent sur le bouton pendant 2 heures
+  const filter = i => i.customId === 'start_quiz'
+  const collector = channel.createMessageComponentCollector({ filter, time: 7200000 })
+
+  collector.on('collect', async interaction => {
+    await interaction.reply({ content: '🚀 Le quiz commence ! Les questions arrivent...', ephemeral: true })
+    sendQuestionsToParticipant(interaction)
+  })
+
+  collector.on('end', async () => {
+    // Afficher le classement final après 2 heures
+    const top = Object.entries(participantScores)
+      .sort((a, b) => b[1].score - a[1].score)
+      .slice(0, 10)
+
+    const medals = ['🥇', '🥈', '🥉']
+    const classement = top.length
+      ? top.map(([id, data], i) =>
+          `${medals[i] || `${i + 1}.`} **${data.username}** — ${data.score} pts (${data.correct} bonnes / ${data.wrong} mauvaises)`
+        ).join('\n')
+      : 'Aucun participant cette semaine.'
+
+    await channel.send({
+      embeds: [new EmbedBuilder()
+        .setTitle('🏆 CLASSEMENT FINAL DU QUIZ')
+        .setDescription(classement)
+        .setColor('#FFD700')]
+    })
+
+    quizRunning = false
+  })
 }
 
 async function registerCommands() {
@@ -132,7 +166,15 @@ client.on('ready', async () => {
   setInterval(() => {
     const now = new Date()
     if (now.getDay() === 5 && now.getHours() === 16 && now.getMinutes() === 0) {
-      client.channels.fetch(CHANNEL_ID).then(channel => startQuiz(channel))
+      // Lancement automatique le vendredi à 16h
+      const fakeInteraction = {
+        reply: async () => {},
+        channel: { createMessageComponentCollector: () => {} }
+      }
+      client.channels.fetch(CHANNEL_ID).then(channel => {
+        fakeInteraction.channel = channel
+        startQuiz(fakeInteraction)
+      })
     }
   }, 60000)
 })
@@ -140,9 +182,7 @@ client.on('ready', async () => {
 client.on('interactionCreate', async interaction => {
   if (!interaction.isChatInputCommand()) return
   if (interaction.commandName === 'quiz') {
-    await interaction.reply({ content: '🧠 Le quiz démarre !', ephemeral: true })
-    const channel = await client.channels.fetch(CHANNEL_ID)
-    startQuiz(channel)
+    startQuiz(interaction)
   }
 })
 
