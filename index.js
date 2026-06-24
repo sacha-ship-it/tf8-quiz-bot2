@@ -30,7 +30,6 @@ async function sendQuestionsToParticipant(interaction) {
       new ButtonBuilder().setCustomId(`q${i}_D_${userId}`).setLabel('D').setStyle(ButtonStyle.Primary),
     )
 
-    // Envoyer la question en éphémère — visible uniquement par cette personne
     await interaction.followUp({
       embeds: [new EmbedBuilder()
         .setTitle(`❓ Question ${i + 1} / ${questions.length}`)
@@ -43,7 +42,6 @@ async function sendQuestionsToParticipant(interaction) {
 
     const startTime = Date.now()
 
-    // Attendre que la personne réponde avant de passer à la suite
     await new Promise(resolve => {
       const filter = i2 => i2.customId.endsWith(`_${userId}`) && i2.user.id === userId
       const collector = interaction.channel.createMessageComponentCollector({ filter, time: 10000, max: 1 })
@@ -56,16 +54,10 @@ async function sendQuestionsToParticipant(interaction) {
           const pts = 10 + speed
           participantScores[userId].score += pts
           participantScores[userId].correct += 1
-          await i2.reply({
-            content: `✅ Bonne réponse ! **+${pts} pts** (dont +${speed} pts rapidité)`,
-            ephemeral: true
-          })
+          await i2.reply({ content: `✅ Bonne réponse ! **+${pts} pts** (dont +${speed} pts rapidité)`, ephemeral: true })
         } else {
           participantScores[userId].wrong += 1
-          await i2.reply({
-            content: `❌ Mauvaise réponse ! La bonne réponse était **${q.answer}** — ${q.choices.find(c => c.startsWith(q.answer))}`,
-            ephemeral: true
-          })
+          await i2.reply({ content: `❌ Mauvaise réponse ! La bonne réponse était **${q.answer}** — ${q.choices.find(c => c.startsWith(q.answer))}`, ephemeral: true })
         }
 
         collector.stop()
@@ -77,7 +69,7 @@ async function sendQuestionsToParticipant(interaction) {
 
   await interaction.followUp({
     embeds: [new EmbedBuilder()
-      .setTitle('✅ Tu as terminé le quiz !')
+      .setTitle('✅ Quiz terminé !')
       .setDescription(`**Score : ${participantScores[userId].score} pts**\n✅ ${participantScores[userId].correct} bonnes réponses\n❌ ${participantScores[userId].wrong} mauvaises réponses`)
       .setColor('#00FF00')],
     ephemeral: true
@@ -95,7 +87,6 @@ async function startQuiz(commandInteraction) {
 
   const channel = await client.channels.fetch(CHANNEL_ID)
 
-  // Bouton "Commencer le questionnaire" visible par tout le monde
   const startRow = new ActionRowBuilder().addComponents(
     new ButtonBuilder()
       .setCustomId('start_quiz')
@@ -106,14 +97,13 @@ async function startQuiz(commandInteraction) {
   await channel.send({
     embeds: [new EmbedBuilder()
       .setTitle('🧠 QUIZ TRADING — PRÊTS ?')
-      .setDescription('Le quiz de la semaine est disponible !\n\n🔒 Les questions sont **privées** — personne ne voit tes réponses.\n\nClique sur le bouton ci-dessous pour commencer 👇\n\n⏱️ Tu as **10 secondes** par question. Tu dois répondre à chaque question avant de passer à la suivante.')
+      .setDescription('Le quiz de la semaine est disponible !\n\n🔒 Les questions sont **privées** — personne ne voit tes réponses.\n\nClique sur le bouton ci-dessous pour commencer 👇\n\n⏱️ Tu as **10 secondes** par question.')
       .setColor('#FFD700')],
     components: [startRow]
   })
 
   await commandInteraction.reply({ content: '✅ Le quiz a été lancé dans le canal dédié !', ephemeral: true })
 
-  // Attendre que les gens cliquent sur le bouton pendant 2 heures
   const filter = i => i.customId === 'start_quiz'
   const collector = channel.createMessageComponentCollector({ filter, time: 7200000 })
 
@@ -123,7 +113,6 @@ async function startQuiz(commandInteraction) {
   })
 
   collector.on('end', async () => {
-    // Afficher le classement final après 2 heures
     const top = Object.entries(participantScores)
       .sort((a, b) => b[1].score - a[1].score)
       .slice(0, 10)
@@ -151,12 +140,16 @@ async function registerCommands() {
     new SlashCommandBuilder()
       .setName('quiz')
       .setDescription('Lance le quiz trading de la semaine')
+      .toJSON(),
+    new SlashCommandBuilder()
+      .setName('classement')
+      .setDescription('Voir le classement actuel du quiz')
       .toJSON()
   ]
 
   const rest = new REST({ version: '10' }).setToken(TOKEN)
   await rest.put(Routes.applicationCommands(CLIENT_ID), { body: commands })
-  console.log('✅ Commande /quiz enregistrée')
+  console.log('✅ Commandes /quiz et /classement enregistrées')
 }
 
 client.on('ready', async () => {
@@ -166,23 +159,37 @@ client.on('ready', async () => {
   setInterval(() => {
     const now = new Date()
     if (now.getDay() === 5 && now.getHours() === 16 && now.getMinutes() === 0) {
-      // Lancement automatique le vendredi à 16h
-      const fakeInteraction = {
-        reply: async () => {},
-        channel: { createMessageComponentCollector: () => {} }
-      }
-      client.channels.fetch(CHANNEL_ID).then(channel => {
-        fakeInteraction.channel = channel
-        startQuiz(fakeInteraction)
-      })
+      client.channels.fetch(CHANNEL_ID).then(channel => startQuiz({ reply: async () => {} }))
     }
   }, 60000)
 })
 
 client.on('interactionCreate', async interaction => {
   if (!interaction.isChatInputCommand()) return
+
   if (interaction.commandName === 'quiz') {
     startQuiz(interaction)
+  }
+
+  if (interaction.commandName === 'classement') {
+    const top = Object.entries(participantScores)
+      .sort((a, b) => b[1].score - a[1].score)
+      .slice(0, 10)
+
+    const medals = ['🥇', '🥈', '🥉']
+    const classement = top.length
+      ? top.map(([id, data], i) =>
+          `${medals[i] || `${i + 1}.`} **${data.username}** — ${data.score} pts (${data.correct} bonnes / ${data.wrong} mauvaises)`
+        ).join('\n')
+      : 'Aucun participant pour le moment.'
+
+    await interaction.reply({
+      embeds: [new EmbedBuilder()
+        .setTitle('🏆 CLASSEMENT DU QUIZ — EN COURS')
+        .setDescription(classement)
+        .setColor('#FFD700')],
+      ephemeral: true
+    })
   }
 })
 
