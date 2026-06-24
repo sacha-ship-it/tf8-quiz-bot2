@@ -1,6 +1,5 @@
 const { Client, GatewayIntentBits, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js')
 const questions = require('./questions')
-const { addScore, getLeaderboard, reset } = require('./scores')
 
 const TOKEN = process.env.TOKEN
 const CHANNEL_ID = process.env.QUIZ_CHANNEL_ID
@@ -13,9 +12,11 @@ const client = new Client({
   ]
 })
 
+let scores = {}
+
 async function startQuiz() {
   const channel = await client.channels.fetch(CHANNEL_ID)
-  reset()
+  scores = {}
 
   await channel.send({
     embeds: [new EmbedBuilder()
@@ -58,9 +59,13 @@ async function startQuiz() {
       const choice = interaction.customId.split('_')[1]
       const speed = Math.max(0, Math.round((10000 - (Date.now() - startTime)) / 1000))
 
+      if (!scores[interaction.user.id]) {
+        scores[interaction.user.id] = { username: interaction.user.username, score: 0 }
+      }
+
       if (choice === q.answer) {
         const pts = 10 + speed
-        addScore(interaction.user.id, interaction.user.username, pts)
+        scores[interaction.user.id].score += pts
         await interaction.reply({ content: `✅ Bonne réponse ! +${pts} pts (dont +${speed} rapidité)`, ephemeral: true })
       } else {
         await interaction.reply({ content: `❌ Mauvaise réponse ! Bonne réponse : **${q.answer}**`, ephemeral: true })
@@ -73,10 +78,13 @@ async function startQuiz() {
     await new Promise(r => setTimeout(r, 3000))
   }
 
-  const top = getLeaderboard()
+  const top = Object.entries(scores)
+    .sort((a, b) => b[1].score - a[1].score)
+    .slice(0, 10)
+
   const medals = ['🥇', '🥈', '🥉']
   const classement = top.length
-    ? top.map((s, i) => `${medals[i] || `${i + 1}.`} **${s.username}** — ${s.score} pts`).join('\n')
+    ? top.map(([id, data], i) => `${medals[i] || `${i + 1}.`} **${data.username}** — ${data.score} pts`).join('\n')
     : 'Aucun participant cette semaine.'
 
   await channel.send({
@@ -90,7 +98,6 @@ async function startQuiz() {
 
 client.on('ready', () => {
   console.log(`✅ Bot connecté : ${client.user.tag}`)
-
   setInterval(() => {
     const now = new Date()
     if (now.getDay() === 5 && now.getHours() === 16 && now.getMinutes() === 0) {
