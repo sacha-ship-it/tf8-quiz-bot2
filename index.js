@@ -11,6 +11,7 @@ const client = new Client({
 
 let quizRunning = false
 const participantScores = {}
+const hasParticipated = new Set()
 
 async function sendQuestionsToParticipant(interaction) {
   const userId = interaction.user.id
@@ -84,6 +85,7 @@ async function startQuiz(commandInteraction) {
 
   quizRunning = true
   Object.keys(participantScores).forEach(k => delete participantScores[k])
+  hasParticipated.clear()
 
   const channel = await client.channels.fetch(CHANNEL_ID)
 
@@ -108,29 +110,18 @@ async function startQuiz(commandInteraction) {
   const collector = channel.createMessageComponentCollector({ filter, time: 7200000 })
 
   collector.on('collect', async interaction => {
+    const userId = interaction.user.id
+
+    if (hasParticipated.has(userId)) {
+      return interaction.reply({ content: '❌ Tu as déjà participé au quiz cette semaine !', ephemeral: true })
+    }
+
+    hasParticipated.add(userId)
     await interaction.reply({ content: '🚀 Le quiz commence ! Les questions arrivent...', ephemeral: true })
     sendQuestionsToParticipant(interaction)
   })
 
   collector.on('end', async () => {
-    const top = Object.entries(participantScores)
-      .sort((a, b) => b[1].score - a[1].score)
-      .slice(0, 10)
-
-    const medals = ['🥇', '🥈', '🥉']
-    const classement = top.length
-      ? top.map(([id, data], i) =>
-          `${medals[i] || `${i + 1}.`} **${data.username}** — ${data.score} pts (${data.correct} bonnes / ${data.wrong} mauvaises)`
-        ).join('\n')
-      : 'Aucun participant cette semaine.'
-
-    await channel.send({
-      embeds: [new EmbedBuilder()
-        .setTitle('🏆 CLASSEMENT FINAL DU QUIZ')
-        .setDescription(classement)
-        .setColor('#FFD700')]
-    })
-
     quizRunning = false
   })
 }
@@ -143,7 +134,7 @@ async function registerCommands() {
       .toJSON(),
     new SlashCommandBuilder()
       .setName('classement')
-      .setDescription('Voir le classement actuel du quiz')
+      .setDescription('Affiche le classement du quiz')
       .toJSON()
   ]
 
@@ -185,10 +176,10 @@ client.on('interactionCreate', async interaction => {
 
     await interaction.reply({
       embeds: [new EmbedBuilder()
-        .setTitle('🏆 CLASSEMENT DU QUIZ — EN COURS')
+        .setTitle('🏆 CLASSEMENT DU QUIZ')
         .setDescription(classement)
         .setColor('#FFD700')],
-      ephemeral: true
+      ephemeral: false
     })
   }
 })
