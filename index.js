@@ -79,7 +79,7 @@ async function sendQuestionsToParticipant(interaction) {
 
 async function startQuiz(commandInteraction) {
   if (quizRunning) {
-    await commandInteraction.reply({ content: '⚠️ A quiz is already in progress!', ephemeral: true })
+    await commandInteraction.reply({ content: '⚠️ A quiz is already in progress! Use /endquiz to force end it.', ephemeral: true })
     return
   }
 
@@ -135,12 +135,16 @@ async function registerCommands() {
     new SlashCommandBuilder()
       .setName('classement')
       .setDescription('Display the current quiz leaderboard')
+      .toJSON(),
+    new SlashCommandBuilder()
+      .setName('endquiz')
+      .setDescription('Force end the current quiz')
       .toJSON()
   ]
 
   const rest = new REST({ version: '10' }).setToken(TOKEN)
   await rest.put(Routes.applicationCommands(CLIENT_ID), { body: commands })
-  console.log('✅ Commands /quiz and /classement registered')
+  console.log('✅ Commands /quiz, /classement and /endquiz registered')
 }
 
 client.on('ready', async () => {
@@ -181,6 +185,16 @@ client.on('interactionCreate', async interaction => {
         .setColor('#FFD700')],
       ephemeral: false
     })
+  }
+
+  if (interaction.commandName === 'endquiz') {
+    if (quizRunning) {
+      quizRunning = false
+      hasParticipated.clear()
+      await interaction.reply({ content: '✅ The quiz has been manually ended. You can now start a new one with /quiz.', ephemeral: true })
+    } else {
+      await interaction.reply({ content: '⚠️ No quiz is currently running.', ephemeral: true })
+    }
   }
 })
 
