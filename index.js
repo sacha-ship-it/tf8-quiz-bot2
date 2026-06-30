@@ -1,4 +1,4 @@
-cconst { Client, GatewayIntentBits, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, REST, Routes, SlashCommandBuilder } = require('discord.js')
+const { Client, GatewayIntentBits, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, REST, Routes, SlashCommandBuilder } = require('discord.js')
 const fs = require('fs')
 const questions = require('./questions')
 
@@ -82,7 +82,6 @@ async function sendQuestionsToParticipant(interaction) {
     })
 
     const startTime = Date.now()
-    let answeredCorrectly = null
     let answerFeedback = ''
 
     await new Promise(resolve => {
@@ -97,11 +96,9 @@ async function sendQuestionsToParticipant(interaction) {
           const pts = 10 + speed
           quizScore += pts
           quizCorrect += 1
-          answeredCorrectly = true
           answerFeedback = `✅ Correct answer! +${pts} pts (including +${speed} speed bonus)`
         } else {
           quizWrong += 1
-          answeredCorrectly = false
           answerFeedback = `❌ Wrong answer! The correct answer was ${q.answer}: ${q.choices.find(c => c.startsWith(q.answer))}`
         }
 
@@ -109,16 +106,14 @@ async function sendQuestionsToParticipant(interaction) {
         collector.stop()
       })
 
-      collector.on('end', async (collected, reason) => {
+      collector.on('end', async (collected) => {
         if (collected.size === 0) {
           answerFeedback = `⏱️ Time's up! The correct answer was ${q.answer}: ${q.choices.find(c => c.startsWith(q.answer))}`
           quizWrong += 1
         }
 
-        // Show the result of THIS question first, separately from the next question
         await interaction.followUp({ content: answerFeedback, ephemeral: true })
 
-        // Pause before the next question appears, to avoid overlap between feedback and next question
         setTimeout(resolve, 2000)
       })
     })
@@ -237,9 +232,10 @@ client.on('interactionCreate', async interaction => {
 
     const medals = ['🥇', '🥈', '🥉']
     const classement = top.length
-      ? top.map(([id, data], i) =>
-          `${medals[i] || `${i + 1}.`} ${data.username}: ${data.score} pts (${data.quizzesPlayed} quizzes played)`
-        ).join('\n')
+      ? top.map(([id, data], i) => {
+          const rank = medals[i] || (i + 1) + '.'
+          return rank + ' ' + data.username + ': ' + data.score + ' pts (' + data.quizzesPlayed + ' quizzes played)'
+        }).join('\n')
       : 'No participants yet.'
 
     await interaction.reply({
