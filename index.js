@@ -1,11 +1,9 @@
 const { Client, GatewayIntentBits, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, REST, Routes, SlashCommandBuilder } = require('discord.js')
-const fs = require('fs')
 const questions = require('./questions')
 
 const TOKEN = process.env.TOKEN
 const CHANNEL_ID = process.env.QUIZ_CHANNEL_ID
 const CLIENT_ID = process.env.CLIENT_ID
-const SCORES_FILE = './scores.json'
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds]
@@ -13,53 +11,15 @@ const client = new Client({
 
 let quizRunning = false
 const hasParticipated = new Set()
-
-function loadScores() {
-  try {
-    if (fs.existsSync(SCORES_FILE)) {
-      return JSON.parse(fs.readFileSync(SCORES_FILE, 'utf8'))
-    }
-  } catch (e) {
-    console.log('No existing scores file, creating one...')
-  }
-  return {}
-}
-
-let globalScores = loadScores()
-
-let writeQueue = Promise.resolve()
-let pendingWrite = false
-
-function saveScores() {
-  if (pendingWrite) return
-  pendingWrite = true
-
-  writeQueue = writeQueue.then(() => {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        try {
-          fs.writeFileSync(SCORES_FILE, JSON.stringify(globalScores, null, 2))
-        } catch (e) {
-          console.error('Error writing scores file:', e)
-        }
-        pendingWrite = false
-        resolve()
-      }, 500)
-    })
-  })
-}
+let currentQuizScores = {}
 
 async function sendQuestionsToParticipant(interaction) {
   const userId = interaction.user.id
   const username = interaction.user.username
 
-  if (!globalScores[userId]) {
-    globalScores[userId] = { username, score: 0, correct: 0, wrong: 0, quizzesPlayed: 0 }
+  if (!currentQuizScores[userId]) {
+    currentQuizScores[userId] = { username, score: 0, correct: 0, wrong: 0 }
   }
-
-  let quizScore = 0
-  let quizCorrect = 0
-  let quizWrong = 0
 
   for (let i = 0; i < questions.length; i++) {
     const q = questions[i]
@@ -94,11 +54,11 @@ async function sendQuestionsToParticipant(interaction) {
 
         if (choice === q.answer) {
           const pts = 10 + speed
-          quizScore += pts
-          quizCorrect += 1
+          currentQuizScores[userId].score += pts
+          currentQuizScores[userId].correct += 1
           answerFeedback = `✅ Correct answer! +${pts} pts (including +${speed} speed bonus)`
         } else {
-          quizWrong += 1
+          currentQuizScores[userId].wrong += 1
           answerFeedback = `❌ Wrong answer! The correct answer was ${q.answer}: ${q.choices.find(c => c.startsWith(q.answer))}`
         }
 
@@ -109,27 +69,19 @@ async function sendQuestionsToParticipant(interaction) {
       collector.on('end', async (collected) => {
         if (collected.size === 0) {
           answerFeedback = `⏱️ Time's up! The correct answer was ${q.answer}: ${q.choices.find(c => c.startsWith(q.answer))}`
-          quizWrong += 1
+          currentQuizScores[userId].wrong += 1
         }
 
         await interaction.followUp({ content: answerFeedback, ephemeral: true })
-
         setTimeout(resolve, 2000)
       })
     })
   }
 
-  globalScores[userId].score += quizScore
-  globalScores[userId].correct += quizCorrect
-  globalScores[userId].wrong += quizWrong
-  globalScores[userId].quizzesPlayed += 1
-  globalScores[userId].username = username
-  saveScores()
-
   await interaction.followUp({
     embeds: [new EmbedBuilder()
       .setTitle('🏁 Quiz completed!')
-      .setDescription(`Score for this quiz: ${quizScore} pts\n✅ Correct answers: ${quizCorrect}\n❌ Wrong answers: ${quizWrong}\n\nCome back next week for a new quiz!`)
+      .setDescription(`Score: ${currentQuizScores[userId].score} pts\n✅ Correct answers: ${currentQuizScores[userId].correct}\n❌ Wrong answers: ${currentQuizScores[userId].wrong}\n\nCome back next week for a new quiz!`)
       .setColor('#00FF00')],
     ephemeral: true
   })
@@ -148,6 +100,7 @@ async function startQuiz(commandInteraction) {
 
   quizRunning = true
   hasParticipated.clear()
+  currentQuizScores = {}
 
   const channel = await client.channels.fetch(CHANNEL_ID)
 
@@ -197,7 +150,7 @@ async function registerCommands() {
       .toJSON(),
     new SlashCommandBuilder()
       .setName('classement')
-      .setDescription('Show the overall leaderboard')
+      .setDescription('Show this week\'s quiz leaderboard')
       .toJSON(),
     new SlashCommandBuilder()
       .setName('endquiz')
@@ -224,9 +177,7 @@ client.on('interactionCreate', async interaction => {
   }
 
   if (interaction.commandName === 'classement') {
-    globalScores = loadScores()
-
-    const top = Object.entries(globalScores)
+    const top = Object.entries(currentQuizScores)
       .sort((a, b) => b[1].score - a[1].score)
       .slice(0, 10)
 
@@ -234,13 +185,13 @@ client.on('interactionCreate', async interaction => {
     const classement = top.length
       ? top.map(([id, data], i) => {
           const rank = medals[i] || (i + 1) + '.'
-          return rank + ' ' + data.username + ': ' + data.score + ' pts (' + data.quizzesPlayed + ' quizzes played)'
+          return rank + ' ' + data.username + ': ' + data.score + ' pts (' + data.correct + ' correct, ' + data.wrong + ' wrong)'
         }).join('\n')
       : 'No participants yet.'
 
     await interaction.reply({
       embeds: [new EmbedBuilder()
-        .setTitle('🏆 OVERALL LEADERBOARD')
+        .setTitle('🏆 THIS WEEK\'S QUIZ LEADERBOARD')
         .setDescription(classement)
         .setColor('#FFD700')],
       ephemeral: false
