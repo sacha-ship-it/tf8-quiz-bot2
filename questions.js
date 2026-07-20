@@ -1,52 +1,52 @@
 module.exports = [
   {
-    question: "According to the theme, what were the best traders in history obsessed with?",
-    choices: ["A - Making money", "B - Making good decisions", "C - Finding the best setups", "D - Beating the market"],
+    question: "According to this week's recap, what is the biggest mistake traders make?",
+    choices: ["A - Trading too many markets", "B - Believing the next setup or mentor will be the missing piece", "C - Not using enough indicators", "D - Taking too many positions"],
     answer: "B"
   },
   {
-    question: "What does the theme say profits are?",
-    choices: ["A - The main goal", "B - A reward for hard work", "C - A byproduct of consistently following a proven process", "D - The result of good market conditions"],
+    question: "What do most consistently profitable traders have more of compared to average traders?",
+    choices: ["A - More strategies", "B - More indicators", "C - More discipline", "D - More capital"],
     answer: "C"
   },
   {
-    question: "What can traders control according to this week's tips?",
-    choices: ["A - The next candle", "B - The market direction", "C - Their preparation, execution and discipline", "D - Their P&L"],
-    answer: "C"
-  },
-  {
-    question: "What does chasing P&L lead to?",
-    choices: ["A - Better results", "B - Forcing trades, moving stops and abandoning your edge", "C - More discipline", "D - Finding better setups"],
+    question: "Complete this sentence from the recap: 'Stop looking for more strategies. Start becoming...'",
+    choices: ["A - ...a better analyst", "B - ...exceptional at one", "C - ...more consistent", "D - ...a profitable trader"],
     answer: "B"
   },
   {
-    question: "According to Alexandre, what is waiting for your setup?",
-    choices: ["A - Wasting time", "B - A sign of weakness", "C - A position", "D - A mistake"],
+    question: "According to The Floor 8, how is confidence built?",
+    choices: ["A - By winning every trade", "B - By having a large account", "C - By identifying your setup, executing consistently and reviewing honestly", "D - By following multiple strategies"],
     answer: "C"
   },
   {
-    question: "Complete this sentence: Sitting on your hands is sometimes...",
-    choices: ["A - The worst thing you can do", "B - A sign you have no edge", "C - The highest-quality trade you can make", "D - A lack of discipline"],
+    question: "What should you focus on when reviewing your week's trades?",
+    choices: ["A - Only your P&L", "B - Your win rate", "C - Whether you followed your rules and waited for your setup", "D - The number of trades taken"],
     answer: "C"
   },
   {
-    question: "Which of these is NOT one of the end-of-day questions Alexandre suggests asking yourself?",
-    choices: ["A - Did I follow my trading plan?", "B - Did I make a profit today?", "C - Did I respect my risk?", "D - Did I avoid emotional decisions?"],
+    question: "How did Mark Douglas define an edge?",
+    choices: ["A - A guaranteed winning strategy", "B - An indication of a higher probability of one thing happening over another", "C - A technical indicator that never fails", "D - A risk management system"],
     answer: "B"
   },
   {
-    question: "According to the theme, when is a trading day considered successful?",
-    choices: ["A - Only when you are green", "B - When you make more than 1%", "C - When you follow your process, green or red", "D - When you find 3 setups or more"],
+    question: "According to the recap, what is our role as traders?",
+    choices: ["A - To predict every move in the market", "B - To find the perfect setup", "C - To execute our edge consistently whenever it appears", "D - To maximize the number of trades"],
     answer: "C"
   },
   {
-    question: "Complete this sequence: Process creates consistency. Consistency creates...",
-    choices: ["A - Setups", "B - Discipline", "C - Risk management", "D - Profits"],
-    answer: "D"
+    question: "Does a setup need to win every time to be profitable?",
+    choices: ["A - Yes, a setup must have a 100% win rate", "B - Yes, at least 80% of the time", "C - No, it just needs to be executed consistently", "D - No, but it needs to win more than 60% of the time"],
+    answer: "C"
   },
   {
-    question: "Who are the traders who win long term according to Alexandre?",
-    choices: ["A - The ones with the biggest winning days", "B - The ones who trade the most", "C - The ones who make the fewest bad decisions", "D - The ones with the best setups"],
-    answer: "C"
+    question: "Which of these is NOT one of the three end-of-week questions from the recap?",
+    choices: ["A - Did I wait for my setup?", "B - Did I make a profit this week?", "C - Did I follow my rules?", "D - Did I trade with discipline?"],
+    answer: "B"
+  },
+  {
+    question: "What does The Floor 8 say the market will always offer?",
+    choices: ["A - Guaranteed profits", "B - Another opportunity", "C - The perfect setup", "D - A second chance"],
+    answer: "B"
   }
 ]
