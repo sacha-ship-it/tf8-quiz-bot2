@@ -1,52 +1,52 @@
 module.exports = [
   {
-    question: "According to this week's recap, what is the biggest mistake traders make?",
-    choices: ["A - Trading too many markets", "B - Believing the next setup or mentor will be the missing piece", "C - Not using enough indicators", "D - Taking too many positions"],
+    question: "According to this week's recap, what did more trades actually mean?",
+    choices: ["A - More profits", "B - More spread, more emotion and more ways to break your rules", "C - More experience", "D - More setups"],
     answer: "B"
   },
   {
-    question: "What do most consistently profitable traders have more of compared to average traders?",
-    choices: ["A - More strategies", "B - More indicators", "C - More discipline", "D - More capital"],
+    question: "What did the traders who had their best week have in common?",
+    choices: ["A - They traded the most", "B - They used the most indicators", "C - They were the most selective", "D - They held positions the longest"],
     answer: "C"
   },
   {
-    question: "Complete this sentence from the recap: 'Stop looking for more strategies. Start becoming...'",
-    choices: ["A - ...a better analyst", "B - ...exceptional at one", "C - ...more consistent", "D - ...a profitable trader"],
+    question: "According to Alexandre, what is overtrading almost never about?",
+    choices: ["A - Greed", "B - The market", "C - Poor risk management", "D - Lack of strategy"],
     answer: "B"
   },
   {
-    question: "According to The Floor 8, how is confidence built?",
-    choices: ["A - By winning every trade", "B - By having a large account", "C - By identifying your setup, executing consistently and reviewing honestly", "D - By following multiple strategies"],
+    question: "How does Alexandre describe boredom as a trader?",
+    choices: ["A - A sign of discipline", "B - A normal part of trading", "C - A position and the most expensive one you will ever hold", "D - A signal to look for new setups"],
     answer: "C"
   },
   {
-    question: "What should you focus on when reviewing your week's trades?",
-    choices: ["A - Only your P&L", "B - Your win rate", "C - Whether you followed your rules and waited for your setup", "D - The number of trades taken"],
-    answer: "C"
+    question: "When should you set your maximum number of trades according to Alexandre?",
+    choices: ["A - During the session", "B - Mid-candle", "C - After your first trade", "D - Before the session in a calm mind"],
+    answer: "D"
   },
   {
-    question: "How did Mark Douglas define an edge?",
-    choices: ["A - A guaranteed winning strategy", "B - An indication of a higher probability of one thing happening over another", "C - A technical indicator that never fails", "D - A risk management system"],
+    question: "Complete this sentence from the recap: 'The goal was never to be active. It was to be...'",
+    choices: ["A - ...profitable every day", "B - ...right when it counts and patient the rest of the time", "C - ...consistent and busy", "D - ...always in a trade"],
     answer: "B"
   },
   {
-    question: "According to the recap, what is our role as traders?",
-    choices: ["A - To predict every move in the market", "B - To find the perfect setup", "C - To execute our edge consistently whenever it appears", "D - To maximize the number of trades"],
+    question: "According to alli_baba1, what comes after finding a strategy?",
+    choices: ["A - Looking for a holy grail", "B - Taking as many trades as possible", "C - Learning structure, building an edge, mastering risk then discipline and journaling", "D - Passing your evaluation immediately"],
     answer: "C"
   },
   {
-    question: "Does a setup need to win every time to be profitable?",
-    choices: ["A - Yes, a setup must have a 100% win rate", "B - Yes, at least 80% of the time", "C - No, it just needs to be executed consistently", "D - No, but it needs to win more than 60% of the time"],
+    question: "What creates consistency according to the community recap?",
+    choices: ["A - Finding the holy grail", "B - Trading more often", "C - The habits", "D - Having a big account"],
     answer: "C"
   },
   {
-    question: "Which of these is NOT one of the three end-of-week questions from the recap?",
-    choices: ["A - Did I wait for my setup?", "B - Did I make a profit this week?", "C - Did I follow my rules?", "D - Did I trade with discipline?"],
+    question: "What reminder did bwayo_254 and delight683 share for traders on a live account?",
+    choices: ["A - Always use a stop loss", "B - Never forget the consistency rule", "C - Trade only one asset", "D - Always hold positions overnight"],
     answer: "B"
   },
   {
-    question: "What does The Floor 8 say the market will always offer?",
-    choices: ["A - Guaranteed profits", "B - Another opportunity", "C - The perfect setup", "D - A second chance"],
-    answer: "B"
+    question: "Which of these is NOT mentioned as a step in alli_baba1's process?",
+    choices: ["A - Learn structure", "B - Build an edge", "C - Find the most traded asset", "D - Master risk"],
+    answer: "C"
   }
 ]
