@@ -1,52 +1,52 @@
 module.exports = [
   {
-    question: "What should a trading journal track beyond P&L?",
-    choices: ["A - Only winning trades", "B - Decisions, reasoning and execution", "C - Daily market news", "D - Position sizes only"],
+    question: "According to this week's theme, what is consistency really about?",
+    choices: ["A - Having the perfect strategy", "B - Making your performance measurable", "C - Winning every trade", "D - Trading as many setups as possible"],
     answer: "B"
   },
   {
-    question: "A losing trade that followed your plan perfectly means:",
-    choices: ["A - Your plan is wrong and needs changing", "B - You should stop trading that setup", "C - You made a mistake in execution", "D - You did nothing wrong — that's part of trading"],
+    question: "Why does changing your strategy every day make it impossible to improve?",
+    choices: ["A - Because markets change every day", "B - Because you need at least 10 trades to know if a strategy works", "C - Because every variable you change makes your results unmeasurable", "D - Because consistency only matters in trending markets"],
+    answer: "C"
+  },
+  {
+    question: "According to Alexandre, when do statistics like win rate and expectancy actually become meaningful?",
+    choices: ["A - After your first profitable month", "B - When you execute the same way over 50 or 100 trades", "C - When you have a risk/reward above 2", "D - After passing your evaluation"],
+    answer: "B"
+  },
+  {
+    question: "What is the real goal when executing your edge according to this week's lesson?",
+    choices: ["A - Predict the next winning trade", "B - Avoid all losing trades", "C - Execute your edge long enough for probabilities to work in your favor", "D - Find a setup that wins every time"],
+    answer: "C"
+  },
+  {
+    question: "What do professional traders rely on instead of motivation or confidence?",
+    choices: ["A - A fixed number of trades per day", "B - Routines that remove emotional decisions before the market opens", "C - A mentor who validates their setups", "D - Technical indicators to confirm every entry"],
+    answer: "B"
+  },
+  {
+    question: "Complete this sentence from Alexandre's lesson: 'Ask yourself: Could I trade exactly like this again tomorrow? If the answer is no...'",
+    choices: ["A - ...you had a great day", "B - ...you need a new strategy", "C - ...your process still needs work", "D - ...you should take a break"],
+    answer: "C"
+  },
+  {
+    question: "According to the lesson, where does compounding begin?",
+    choices: ["A - When you start making profits", "B - When you find the right broker", "C - When you increase your position size", "D - With consistency"],
     answer: "D"
   },
   {
-    question: "Why is reviewing good trading days important?",
-    choices: ["A - It is not important, only bad days matter", "B - To understand what you did right and what to repeat", "C - To calculate your win rate", "D - To impress other traders"],
+    question: "What do markets ultimately reward according to Alexandre?",
+    choices: ["A - Traders who occasionally make brilliant decisions", "B - Traders who take the most trades", "C - Traders who can repeat good decisions", "D - Traders who use the most indicators"],
+    answer: "C"
+  },
+  {
+    question: "What is the consequence of consistent execution according to this week's theme?",
+    choices: ["A - More setups", "B - Profits", "C - A funded account", "D - Lower drawdown"],
     answer: "B"
   },
   {
-    question: "What does a day where you saw no setup and stayed out tell you?",
-    choices: ["A - Nothing, it should not be journaled", "B - That you are not active enough", "C - That it is part of the process and worth noting", "D - That you missed an opportunity"],
+    question: "Which of these behaviors makes it impossible to know if your edge works?",
+    choices: ["A - Taking the same setup every day", "B - Journaling your trades", "C - Changing your risk after every loss", "D - Following a fixed routine before the market opens"],
     answer: "C"
-  },
-  {
-    question: "Over time, what starts to matter more than individual trades?",
-    choices: ["A - The total number of trades taken", "B - The size of your biggest win", "C - The patterns in your behavior and performance", "D - Your broker's fees"],
-    answer: "C"
-  },
-  {
-    question: "What is the real value of a trading journal?",
-    choices: ["A - Tracking your total profits", "B - Showing your results to others", "C - Using it to make better decisions next time", "D - Keeping a record for tax purposes"],
-    answer: "C"
-  },
-  {
-    question: "A winning trade does not always mean:",
-    choices: ["A - You made money", "B - The market moved in your favor", "C - You made a good decision", "D - Your position was profitable"],
-    answer: "C"
-  },
-  {
-    question: "What kind of patterns does consistent journaling reveal?",
-    choices: ["A - Market manipulation patterns", "B - The same mistakes, your best setups and moments of lost discipline", "C - Other traders' behavior", "D - Broker pricing patterns"],
-    answer: "B"
-  },
-  {
-    question: "According to the tips, how should you keep your journal?",
-    choices: ["A - Detailed and complex to capture everything", "B - Only on winning weeks", "C - Simple, honest and consistent", "D - Shared with your trading community"],
-    answer: "C"
-  },
-  {
-    question: "What separates a professional journal from a simple trade log?",
-    choices: ["A - The number of trades recorded", "B - Using it to improve future decisions, not just recording what happened", "C - The software used to maintain it", "D - How often it is reviewed"],
-    answer: "B"
   }
 ]
