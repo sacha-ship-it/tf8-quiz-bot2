@@ -1,52 +1,52 @@
 module.exports = [
   {
-    question: "According to this week's theme, what is consistency really about?",
-    choices: ["A - Having the perfect strategy", "B - Making your performance measurable", "C - Winning every trade", "D - Trading as many setups as possible"],
+    question: "According to this week's theme, what is the goal when it comes to emotions in trading?",
+    choices: ["A - Eliminate them completely", "B - Stop letting them make your decisions", "C - Use them to your advantage", "D - Ignore them entirely"],
     answer: "B"
   },
   {
-    question: "Why does changing your strategy every day make it impossible to improve?",
-    choices: ["A - Because markets change every day", "B - Because you need at least 10 trades to know if a strategy works", "C - Because every variable you change makes your results unmeasurable", "D - Because consistency only matters in trending markets"],
+    question: "What should you ask yourself before every trade according to the tips?",
+    choices: ["A - Is this the right market to trade?", "B - How much can I make on this trade?", "C - Is this trade part of my plan or am I reacting to what just happened?", "D - What is the current market sentiment?"],
     answer: "C"
   },
   {
-    question: "According to Alexandre, when do statistics like win rate and expectancy actually become meaningful?",
-    choices: ["A - After your first profitable month", "B - When you execute the same way over 50 or 100 trades", "C - When you have a risk/reward above 2", "D - After passing your evaluation"],
+    question: "What should you NOT do immediately after a loss?",
+    choices: ["A - Review your journal", "B - Take a break", "C - Try to make the money back", "D - Check your risk management"],
+    answer: "C"
+  },
+  {
+    question: "What should you NOT do after a winning trade?",
+    choices: ["A - Journal the trade", "B - Increase your risk because you feel confident", "C - Review your process", "D - Take a break"],
     answer: "B"
   },
   {
-    question: "What is the real goal when executing your edge according to this week's lesson?",
-    choices: ["A - Predict the next winning trade", "B - Avoid all losing trades", "C - Execute your edge long enough for probabilities to work in your favor", "D - Find a setup that wins every time"],
+    question: "According to the tips, what should you do when you miss a move?",
+    choices: ["A - Chase it immediately", "B - Increase your position size on the next trade", "C - Don't chase it — there will always be another opportunity", "D - Switch to a different asset"],
     answer: "C"
   },
   {
-    question: "What do professional traders rely on instead of motivation or confidence?",
-    choices: ["A - A fixed number of trades per day", "B - Routines that remove emotional decisions before the market opens", "C - A mentor who validates their setups", "D - Technical indicators to confirm every entry"],
+    question: "How should you judge your trades according to this week's lesson?",
+    choices: ["A - Only by the P&L", "B - By how many trades you took", "C - By how well you followed your process", "D - By the size of your winners"],
+    answer: "C"
+  },
+  {
+    question: "A losing trade that followed your plan is...",
+    choices: ["A - Always a bad trade", "B - A sign you need a new strategy", "C - Still a good trade", "D - A reason to stop trading for the day"],
+    answer: "C"
+  },
+  {
+    question: "A winning trade driven by emotion is...",
+    choices: ["A - Always a good trade", "B - Still a bad trade", "C - Proof your instincts work", "D - A sign you should trade more on emotion"],
     answer: "B"
   },
   {
-    question: "Complete this sentence from Alexandre's lesson: 'Ask yourself: Could I trade exactly like this again tomorrow? If the answer is no...'",
-    choices: ["A - ...you had a great day", "B - ...you need a new strategy", "C - ...your process still needs work", "D - ...you should take a break"],
+    question: "What should you keep consistent according to the tips?",
+    choices: ["A - Your profit targets", "B - Your trading hours", "C - Your position size", "D - Your number of trades per day"],
     answer: "C"
   },
   {
-    question: "According to the lesson, where does compounding begin?",
-    choices: ["A - When you start making profits", "B - When you find the right broker", "C - When you increase your position size", "D - With consistency"],
-    answer: "D"
-  },
-  {
-    question: "What do markets ultimately reward according to Alexandre?",
-    choices: ["A - Traders who occasionally make brilliant decisions", "B - Traders who take the most trades", "C - Traders who can repeat good decisions", "D - Traders who use the most indicators"],
-    answer: "C"
-  },
-  {
-    question: "What is the consequence of consistent execution according to this week's theme?",
-    choices: ["A - More setups", "B - Profits", "C - A funded account", "D - Lower drawdown"],
+    question: "What is the final message of Control Your Emotions week?",
+    choices: ["A - Avoid trading when emotional", "B - Feel the emotion, recognize it, then follow your plan anyway", "C - Only trade when you feel calm", "D - Take more breaks during the trading session"],
     answer: "B"
-  },
-  {
-    question: "Which of these behaviors makes it impossible to know if your edge works?",
-    choices: ["A - Taking the same setup every day", "B - Journaling your trades", "C - Changing your risk after every loss", "D - Following a fixed routine before the market opens"],
-    answer: "C"
   }
 ]
