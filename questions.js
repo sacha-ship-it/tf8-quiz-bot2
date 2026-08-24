@@ -1,52 +1,52 @@
 module.exports = [
   {
-    question: "According to this week's theme, what is the goal when it comes to emotions in trading?",
-    choices: ["A - Eliminate them completely", "B - Stop letting them make your decisions", "C - Use them to your advantage", "D - Ignore them entirely"],
+    question: "According to this week's theme, what is FOMO making you feel?",
+    choices: ["A - That you need to trade more frequently", "B - That every move is an opportunity you need to catch", "C - That you should increase your position size", "D - That the market is always against you"],
     answer: "B"
   },
   {
-    question: "What should you ask yourself before every trade according to the tips?",
-    choices: ["A - Is this the right market to trade?", "B - How much can I make on this trade?", "C - Is this trade part of my plan or am I reacting to what just happened?", "D - What is the current market sentiment?"],
+    question: "What should you do when a move already happened and your entry is gone?",
+    choices: ["A - Chase it immediately", "B - Increase your position size to compensate", "C - Let it go — a missed trade costs you nothing", "D - Switch to a shorter timeframe to catch it"],
     answer: "C"
   },
   {
-    question: "What should you NOT do immediately after a loss?",
-    choices: ["A - Review your journal", "B - Take a break", "C - Try to make the money back", "D - Check your risk management"],
+    question: "According to the tips, when should you decide what you're looking for?",
+    choices: ["A - After the market opens", "B - When you see a big move", "C - Before you open the charts", "D - When your setup appears"],
     answer: "C"
   },
   {
-    question: "What should you NOT do after a winning trade?",
-    choices: ["A - Journal the trade", "B - Increase your risk because you feel confident", "C - Review your process", "D - Take a break"],
+    question: "If you can't clearly explain why you're entering a trade, what might be making the decision for you?",
+    choices: ["A - Your trading plan", "B - Your risk management", "C - FOMO", "D - Your stop loss"],
+    answer: "C"
+  },
+  {
+    question: "Does a market moving fast automatically mean there's a good trade?",
+    choices: ["A - Yes, fast markets always create opportunities", "B - Yes, you should always trade momentum", "C - No, sometimes the best decision is doing nothing", "D - No, but you should still enter with a smaller size"],
+    answer: "C"
+  },
+  {
+    question: "What does missing a great trade mean according to the tips?",
+    choices: ["A - You made a mistake", "B - You need to review your strategy", "C - It doesn't mean you made a mistake — it's part of trading", "D - You should have acted faster"],
+    answer: "C"
+  },
+  {
+    question: "What should you NEVER do because you feel late on a move?",
+    choices: ["A - Review your trading plan", "B - Increase your size, widen your stop or force an entry", "C - Take a break from trading", "D - Look for another setup"],
     answer: "B"
   },
   {
-    question: "According to the tips, what should you do when you miss a move?",
-    choices: ["A - Chase it immediately", "B - Increase your position size on the next trade", "C - Don't chase it — there will always be another opportunity", "D - Switch to a different asset"],
-    answer: "C"
-  },
-  {
-    question: "How should you judge your trades according to this week's lesson?",
-    choices: ["A - Only by the P&L", "B - By how many trades you took", "C - By how well you followed your process", "D - By the size of your winners"],
-    answer: "C"
-  },
-  {
-    question: "A losing trade that followed your plan is...",
-    choices: ["A - Always a bad trade", "B - A sign you need a new strategy", "C - Still a good trade", "D - A reason to stop trading for the day"],
-    answer: "C"
-  },
-  {
-    question: "A winning trade driven by emotion is...",
-    choices: ["A - Always a good trade", "B - Still a bad trade", "C - Proof your instincts work", "D - A sign you should trade more on emotion"],
+    question: "What is the simple question you should ask yourself before entering a trade?",
+    choices: ["A - Is this the best setup I've ever seen?", "B - Would I take this exact trade if the market hadn't just made that big move?", "C - Can I afford to lose on this trade?", "D - Is the market trending in my direction?"],
     answer: "B"
   },
   {
-    question: "What should you keep consistent according to the tips?",
-    choices: ["A - Your profit targets", "B - Your trading hours", "C - Your position size", "D - Your number of trades per day"],
+    question: "What is the real goal when it comes to FOMO according to this week's lesson?",
+    choices: ["A - Eliminate the feeling of FOMO completely", "B - Avoid watching the charts when FOMO appears", "C - Feel it without acting on it", "D - Trade smaller when FOMO is present"],
     answer: "C"
   },
   {
-    question: "What is the final message of Control Your Emotions week?",
-    choices: ["A - Avoid trading when emotional", "B - Feel the emotion, recognize it, then follow your plan anyway", "C - Only trade when you feel calm", "D - Take more breaks during the trading session"],
-    answer: "B"
+    question: "According to the tips, what is sometimes the trade you should be most proud of?",
+    choices: ["A - Your biggest winning trade", "B - The trade you took against the trend", "C - The one you didn't take", "D - The trade with the best risk/reward ratio"],
+    answer: "C"
   }
 ]
