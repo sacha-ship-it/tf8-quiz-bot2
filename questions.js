@@ -1,52 +1,52 @@
 module.exports = [
   {
-    question: "According to this week's tips, what is your stop-loss?",
-    choices: ["A - A sign of weakness", "B - The price of staying in the game", "C - A tool to avoid losses", "D - An optional safety net"],
+    question: "According to this week's tips, what does consistency actually give you as a trader?",
+    choices: ["A - The perfect strategy", "B - Meaningful data over time", "C - More winning trades", "D - Emotional confidence"],
     answer: "B"
   },
   {
-    question: "If your stop feels too far away, what should you do?",
-    choices: ["A - Move your stop closer", "B - Cancel the trade", "C - Reduce your position size", "D - Increase your target"],
+    question: "Why is it impossible to improve if you change variables constantly?",
+    choices: ["A - Because markets don't reward change", "B - Because you need a fixed strategy forever", "C - Because you can never know if your edge actually works", "D - Because consistency is more important than results"],
     answer: "C"
   },
   {
-    question: "According to the tips, what should determine your stop placement?",
-    choices: ["A - Your emotions", "B - Your profit target", "C - The market", "D - Your account size"],
+    question: "According to the tips, when do statistics like win rate and expectancy actually matter?",
+    choices: ["A - After every single trade", "B - Only when you are profitable", "C - When your execution is consistent over many trades", "D - When your strategy is perfect"],
     answer: "C"
   },
   {
-    question: "What happens the moment you move your stop?",
-    choices: ["A - You protect your capital", "B - You improve your risk management", "C - You are no longer following your trading plan", "D - You give the trade more room to breathe"],
-    answer: "C"
-  },
-  {
-    question: "According to the tips, what is a single disciplined loss compared to an emotional mistake?",
-    choices: ["A - More expensive", "B - Far cheaper", "C - The same cost", "D - Harder to recover from"],
+    question: "What is the goal when your edge doesn't win every time?",
+    choices: ["A - Switch to a better strategy", "B - Execute your edge long enough for probabilities to work", "C - Reduce your risk until you find a winning streak", "D - Take fewer trades"],
     answer: "B"
   },
   {
-    question: "How should you judge yourself as a trader according to this week's lesson?",
-    choices: ["A - By today's P&L", "B - By the number of winning trades", "C - By your execution", "D - By your account growth"],
+    question: "What do professional traders rely on instead of motivation or confidence?",
+    choices: ["A - Market analysis", "B - Intuition built over years", "C - Routines that remove emotional decisions before the market opens", "D - Risk management tools"],
     answer: "C"
   },
   {
-    question: "According to the tips, what is a losing trade that followed your plan?",
-    choices: ["A - A failure", "B - A successful trade", "C - A sign you need to change your strategy", "D - An emotional mistake"],
+    question: "What question should you ask yourself to check if your process is repeatable?",
+    choices: ["A - Did I make money today?", "B - Could I trade exactly like this again tomorrow?", "C - Is my win rate above 50%?", "D - Did I follow my stop loss?"],
     answer: "B"
   },
   {
-    question: "What is a winning trade that broke your rules considered to be?",
-    choices: ["A - A lucky break", "B - Proof your strategy works", "C - A dangerous habit", "D - An exception worth making"],
+    question: "According to the tips, where does compounding begin?",
+    choices: ["A - With a high win rate", "B - With large position sizes", "C - With consistency", "D - With the right market conditions"],
     answer: "C"
   },
   {
-    question: "How do professional traders think according to this week's tips?",
-    choices: ["A - In emotions", "B - In certainties", "C - In probabilities", "D - In short-term results"],
-    answer: "C"
+    question: "What do markets reward according to this week's lesson?",
+    choices: ["A - Traders who occasionally make brilliant decisions", "B - Traders who take the most trades", "C - Traders who have the best strategy", "D - Traders who can repeat good decisions"],
+    answer: "D"
   },
   {
-    question: "According to the tips, which version of yourself should you trust when in a trade?",
-    choices: ["A - The one trying to avoid being wrong", "B - The one that made the plan before emotions entered", "C - The one reacting to market movements", "D - The one focused on today's P&L"],
+    question: "What happens when you improve your execution by just a few percent every week?",
+    choices: ["A - Nothing significant in the short term", "B - It can completely change your results over hundreds of trades", "C - Your win rate doubles", "D - Your drawdown disappears"],
     answer: "B"
+  },
+  {
+    question: "According to the tips, what are profits a consequence of?",
+    choices: ["A - A perfect strategy", "B - Lucky market conditions", "C - Consistent execution", "D - High risk tolerance"],
+    answer: "C"
   }
 ]
