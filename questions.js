@@ -1,52 +1,52 @@
 module.exports = [
   {
-    question: "According to this week's tips, what does consistency actually give you as a trader?",
-    choices: ["A - The perfect strategy", "B - Meaningful data over time", "C - More winning trades", "D - Emotional confidence"],
+    question: "According to this week's tips, what is risk management?",
+    choices: ["A - A rule you follow when things go wrong", "B - The reason you are still trading when things go wrong", "C - A tool to maximize your gains", "D - A strategy you apply after a bad trade"],
     answer: "B"
   },
   {
-    question: "Why is it impossible to improve if you change variables constantly?",
-    choices: ["A - Because markets don't reward change", "B - Because you need a fixed strategy forever", "C - Because you can never know if your edge actually works", "D - Because consistency is more important than results"],
+    question: "When should you define your risk per trade?",
+    choices: ["A - After you enter the trade", "B - During the trade if things go wrong", "C - Before you enter, when you are calm", "D - When you see a good setup"],
     answer: "C"
   },
   {
-    question: "According to the tips, when do statistics like win rate and expectancy actually matter?",
-    choices: ["A - After every single trade", "B - Only when you are profitable", "C - When your execution is consistent over many trades", "D - When your strategy is perfect"],
+    question: "According to the tips, what is your real risk management tool?",
+    choices: ["A - Your stop loss", "B - Your take profit", "C - Your position size", "D - Your daily loss limit"],
     answer: "C"
   },
   {
-    question: "What is the goal when your edge doesn't win every time?",
-    choices: ["A - Switch to a better strategy", "B - Execute your edge long enough for probabilities to work", "C - Reduce your risk until you find a winning streak", "D - Take fewer trades"],
+    question: "If you can't answer how much of your account you are risking in seconds, what does it mean?",
+    choices: ["A - You need a better strategy", "B - You are not ready to enter the trade", "C - Your position size is too small", "D - You should reduce your stop loss"],
     answer: "B"
   },
   {
-    question: "What do professional traders rely on instead of motivation or confidence?",
-    choices: ["A - Market analysis", "B - Intuition built over years", "C - Routines that remove emotional decisions before the market opens", "D - Risk management tools"],
+    question: "What should you do when you hit your daily loss limit?",
+    choices: ["A - Take one more trade to recover", "B - Reduce your position size and continue", "C - Stop trading, no exceptions", "D - Switch to a different market"],
     answer: "C"
   },
   {
-    question: "What question should you ask yourself to check if your process is repeatable?",
-    choices: ["A - Did I make money today?", "B - Could I trade exactly like this again tomorrow?", "C - Is my win rate above 50%?", "D - Did I follow my stop loss?"],
+    question: "According to the tips, what is revenge trading?",
+    choices: ["A - Taking a trade after a winning streak", "B - Increasing your size after a loss to recover faster", "C - Trading against your usual setup", "D - Taking more trades than planned"],
     answer: "B"
   },
   {
-    question: "According to the tips, where does compounding begin?",
-    choices: ["A - With a high win rate", "B - With large position sizes", "C - With consistency", "D - With the right market conditions"],
+    question: "When you revenge trade, what are you actually trading?",
+    choices: ["A - Your plan", "B - The market", "C - Your emotions", "D - Your edge"],
     answer: "C"
   },
   {
-    question: "What do markets reward according to this week's lesson?",
-    choices: ["A - Traders who occasionally make brilliant decisions", "B - Traders who take the most trades", "C - Traders who have the best strategy", "D - Traders who can repeat good decisions"],
-    answer: "D"
-  },
-  {
-    question: "What happens when you improve your execution by just a few percent every week?",
-    choices: ["A - Nothing significant in the short term", "B - It can completely change your results over hundreds of trades", "C - Your win rate doubles", "D - Your drawdown disappears"],
+    question: "According to the tips, how should your risk per trade feel?",
+    choices: ["A - Exciting and significant", "B - Almost too small", "C - Proportional to your confidence", "D - Equal to your previous trade"],
     answer: "B"
   },
   {
-    question: "According to the tips, what are profits a consequence of?",
-    choices: ["A - A perfect strategy", "B - Lucky market conditions", "C - Consistent execution", "D - High risk tolerance"],
+    question: "What is the sign that your position is too big?",
+    choices: ["A - Your stop loss is too far", "B - You are nervous about the trade because of the size", "C - Your take profit is too close", "D - You have too many open trades"],
+    answer: "B"
+  },
+  {
+    question: "According to the tips, what turns a strategy into an edge?",
+    choices: ["A - A high win rate", "B - A perfect setup", "C - Consistency in risk", "D - Large position sizes"],
     answer: "C"
   }
 ]
