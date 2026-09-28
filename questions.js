@@ -1,52 +1,102 @@
 module.exports = [
   {
-    question: "According to this week's tips, what is your first idea in trading?",
-    choices: ["A - A position you have to defend", "B - A starting point, not a position you have to defend", "C - A certainty you should act on immediately", "D - A signal that your setup is ready"],
-    answer: "B"
+    question: "What should you write down before defining an entry trigger?",
+    choices: [
+      "A - The market context",
+      "B - The trade's final P&L",
+      "C - The next week's trading schedule",
+      "D - The number of trades other traders took",
+    ],
+    answer: "A",
   },
   {
-    question: "What should you do before entering a trade according to this week's lesson?",
-    choices: ["A - Check your previous wins", "B - Write down what would prove your setup wrong", "C - Wait for the perfect entry", "D - Ask the community for confirmation"],
-    answer: "B"
+    question: "Why does a trigger need market context?",
+    choices: [
+      "A - Context makes every setup profitable",
+      "B - The same trigger can mean something different in a different market context",
+      "C - Context replaces the need for an entry rule",
+      "D - A trigger only works on one timeframe",
+    ],
+    answer: "B",
   },
   {
-    question: "Why is it harder to judge information clearly once you are in a trade?",
-    choices: ["A - Because the market moves too fast", "B - Because you lose access to your charts", "C - Because money and emotion are involved", "D - Because your setup changes after entry"],
-    answer: "C"
+    question: "What makes an entry trigger specific?",
+    choices: [
+      "A - It is based on a feeling that the market is ready",
+      "B - It is written after the trade closes",
+      "C - It clearly states the condition that must happen before you enter",
+      "D - It changes depending on how the trade is performing",
+    ],
+    answer: "C",
   },
   {
-    question: "What does a clean setup losing tell you about your process?",
-    choices: ["A - Your process was wrong", "B - You need a new strategy", "C - Nothing — outcome alone does not tell you whether your process was right", "D - Your risk management failed"],
-    answer: "C"
+    question: "What is an invalidation point?",
+    choices: [
+      "A - The point where the trade idea is no longer valid",
+      "B - The price where you add to every position",
+      "C - The level where you take profit on every trade",
+      "D - The point where you decide how much you want to make",
+    ],
+    answer: "A",
   },
   {
-    question: "What does it mean when every entry feels like it has to be perfect?",
-    choices: ["A - You have found your edge", "B - You are ready to trade", "C - Pressure is making you search for certainty where there is none", "D - Your strategy is working well"],
-    answer: "C"
+    question: "When should you define the invalidation point?",
+    choices: [
+      "A - Only if the trade starts losing",
+      "B - Before the trade starts",
+      "C - After taking profit",
+      "D - During the weekly review only",
+    ],
+    answer: "B",
   },
   {
-    question: "According to jeffreynicez's experience, when is reviewing the chart without taking a trade useful?",
-    choices: ["A - When the market is trending strongly", "B - When old wins, losses and capital pressure make every entry feel wrong", "C - When you have a new setup to test", "D - When you want to improve your win rate"],
-    answer: "B"
+    question: "Why should a playbook include a no-trade condition?",
+    choices: [
+      "A - To find a reason to enter more often",
+      "B - To avoid writing down the market context",
+      "C - To identify when the setup is not valid and staying out is the right call",
+      "D - To guarantee that every valid setup wins",
+    ],
+    answer: "C",
   },
   {
-    question: "What was wfibrahim1's key takeaway from this week?",
-    choices: ["A - Always take every setup you see", "B - Trading is not going anywhere — take your time and reset if you need it", "C - Speed is the most important factor in trading", "D - Never miss a trade opportunity"],
-    answer: "B"
+    question: "Which is the best example of a no-trade condition?",
+    choices: [
+      "A - Enter as soon as the market starts moving",
+      "B - Skip the trade if the required trigger does not appear",
+      "C - Double the position if the setup feels uncertain",
+      "D - Ignore the plan if the price moves quickly",
+    ],
+    answer: "B",
   },
   {
-    question: "What did zakariye_sarurow's example teach us about spread taking out the first trade?",
-    choices: ["A - The setup was wrong", "B - The risk management failed", "C - A good read and a good execution are two different things", "D - The market conditions were bad"],
-    answer: "C"
+    question: "What should you compare in a before-and-after chart review?",
+    choices: [
+      "A - Your planned setup and your actual execution",
+      "B - Your trade with the most profitable trader's trade",
+      "C - The daily high and the daily low only",
+      "D - Your entry price and your account balance only",
+    ],
+    answer: "A",
   },
   {
-    question: "What is the difference between challenging your bias and challenging your certainty?",
-    choices: ["A - There is no difference", "B - Keep the bias but challenge the certainty", "C - Challenge both equally", "D - Only challenge the certainty when losing"],
-    answer: "B"
+    question: "Why is P&L alone not enough to review a trade?",
+    choices: [
+      "A - P&L never reflects the result of a trade",
+      "B - A winning trade can still break the plan, and a losing trade can follow it correctly",
+      "C - P&L only matters for long-term investors",
+      "D - A chart review makes risk management unnecessary",
+    ],
+    answer: "B",
   },
   {
-    question: "According to this week's lesson, what is sometimes the best decision you can make?",
-    choices: ["A - Force another setup to make up for losses", "B - Take more trades to find the right one", "C - Stop demanding an immediate answer from yourself", "D - Switch to a different market"],
-    answer: "C"
-  }
-]
+    question: "What is the goal of adding a rule to your playbook after reviewing a setup?",
+    choices: [
+      "A - To reuse a clear lesson in a future trade",
+      "B - To make every future trade identical",
+      "C - To remove all uncertainty from the market",
+      "D - To focus only on the trades that made money",
+    ],
+    answer: "A",
+  },
+];
