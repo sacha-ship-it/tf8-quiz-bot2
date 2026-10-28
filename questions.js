@@ -1,102 +1,104 @@
+'use strict';
+
 module.exports = [
   {
-    question: "When should you define your target and invalidation?",
+    question: "When should you choose your session's start and stop times?",
     choices: [
-      "A - After the first candle moves in your favour",
-      "B - Before opening the trade",
-      "C - Once the trade reaches a small profit",
-      "D - When you feel ready to close",
+      "Once you see how the first trade goes",
+      "Before the session, in your own timezone",
+      "When the market starts slowing down",
+      "After checking your daily profit"
     ],
-    answer: "B",
+    answer: "B"
   },
   {
-    question: "What does an invalidation point tell you?",
+    question: "Which session window is the better starting point?",
     choices: [
-      "A - Where the trade idea is no longer valid",
-      "B - Where you should always take partial profits",
-      "C - How much profit you will make",
-      "D - When to increase your position",
+      "The longest one your schedule allows",
+      "The same window as a trader you follow",
+      "A window that ends only when you make a profit",
+      "A short, realistic window you can consistently respect"
     ],
-    answer: "A",
+    answer: "D"
   },
   {
-    question: "What should your plan for taking partial profits include?",
+    question: "Why should you write down your trading window?",
     choices: [
-      "A - Only the amount of profit you want",
-      "B - Only the price where you will close everything",
-      "C - Where to take a partial, how much to close, and how to manage the rest",
-      "D - How other traders are managing their positions",
+      "To make the session's boundaries clear before trading",
+      "To guarantee that a setup appears during the session",
+      "To avoid reviewing your trades afterwards",
+      "To make every session the same length forever"
     ],
-    answer: "C",
+    answer: "A"
   },
   {
-    question: "Why should you plan for price continuing beyond your target?",
+    question: "Your stop time arrives. A new setup appears five minutes later. What fits the plan?",
     choices: [
-      "A - To guarantee that you capture the entire move",
-      "B - To avoid improvising when it happens",
-      "C - To remove the need for an invalidation point",
-      "D - To make sure you enter again immediately",
+      "Take it with a smaller position",
+      "Extend the session if the setup looks strong",
+      "Respect the stop time and skip the new trade",
+      "Take it, then start your review immediately afterwards"
     ],
-    answer: "B",
+    answer: "C"
   },
   {
-    question: "Your trade is slightly profitable and you feel an urge to close it. What should guide your decision?",
+    question: "What should the 30 minutes after your session be used for?",
     choices: [
-      "A - The fear of losing your current profit",
-      "B - The colour of the latest candle",
-      "C - Whether another trader has already exited",
-      "D - The exit rules you defined before entering",
+      "Looking for one final entry",
+      "Reviewing the session rather than opening new trades",
+      "Trading a different asset",
+      "Recovering any losses from the session"
     ],
-    answer: "D",
+    answer: "B"
   },
   {
-    question: "What is the problem with closing a trade just to see a green result?",
+    question: "You feel sharp early in the session but regularly lose focus later. What should you review?",
     choices: [
-      "A - The decision may be driven by a feeling rather than your plan",
-      "B - A profitable trade should never be closed",
-      "C - Every trade should stay open until the session ends",
-      "D - Taking a profit always reduces your performance",
+      "Whether your window should move towards your sharper hours",
+      "Whether a longer session would help you push through",
+      "Whether later trades should use larger positions",
+      "Whether you should stop recording your focus levels"
     ],
-    answer: "A",
+    answer: "A"
   },
   {
-    question: "You planned to close part of your position at a specific level. Price reaches that level. What should you do?",
+    question: "Which review note best matches this week's tips?",
     choices: [
-      "A - Keep the whole position because the trade is profitable",
-      "B - Change the partial amount based only on excitement",
-      "C - Follow your planned partial and management rules",
-      "D - Remove your remaining exit rules",
+      "I should have stayed until the market closed",
+      "I need to catch every move tomorrow",
+      "I will stop only after a winning trade",
+      "I was focused from 9 to 10, then started drifting"
     ],
-    answer: "C",
+    answer: "D"
   },
   {
-    question: "What should you compare after the session?",
+    question: "You keep breaking a three-hour window but can respect one hour. What is the best adjustment?",
     choices: [
-      "A - Your profit with the biggest winner on social media",
-      "B - The exit you planned with the exit you actually took",
-      "C - Your position size with another trader's position size",
-      "D - Your target with the highest price reached that week",
+      "Keep three hours and judge yourself only on profit",
+      "Remove the stop time until you become more disciplined",
+      "Start with the one-hour window you can actually respect",
+      "Add more chart alerts to stay engaged for three hours"
     ],
-    answer: "B",
+    answer: "C"
   },
   {
-    question: "How detailed does your post-session exit review need to be?",
+    question: "What is the weekend review for in this week's plan?",
     choices: [
-      "A - It must explain every candle in the session",
-      "B - It only needs to record whether the trade was green",
-      "C - It must include every possible alternative exit",
-      "D - Two lines comparing your planned and actual exit can be enough",
+      "Reviewing the week and preparing any window adjustments",
+      "Making up the trading hours you missed",
+      "Choosing Monday's stop time after your first trade",
+      "Deciding how much Monday must earn to cover the week"
     ],
-    answer: "D",
+    answer: "A"
   },
   {
-    question: "You followed your exit plan, but price continued higher afterwards. What should you review?",
+    question: "A skipped setup moves in your favour after your stop time. What does that mean?",
     choices: [
-      "A - Whether you followed your rules and what you can learn from the decision",
-      "B - How to avoid using targets on future trades",
-      "C - Why you should always hold until the highest price",
-      "D - How to recover the missed profit immediately",
+      "Your stop time was necessarily wrong",
+      "The move alone does not make respecting your rule a mistake",
+      "You should extend tomorrow's session by the same amount",
+      "You should reopen the platform whenever this happens"
     ],
-    answer: "A",
-  },
+    answer: "B"
+  }
 ];
