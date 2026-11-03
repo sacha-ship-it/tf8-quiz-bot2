@@ -2,103 +2,103 @@
 
 module.exports = [
   {
-    question: "When should you choose your session's start and stop times?",
+    question: 'What should you do before looking for examples on a chart?',
     choices: [
-      "Once you see how the first trade goes",
-      "Before the session, in your own timezone",
-      "When the market starts slowing down",
-      "After checking your daily profit"
+      'Find a winning trade and build a rule around it',
+      'Write a rule covering entry, stop and target',
+      'Choose the result you want the test to produce',
+      'Adjust the setup to match the most recent move'
     ],
-    answer: "B"
+    answer: 'B'
   },
   {
-    question: "Which session window is the better starting point?",
+    question: 'Which sample follows this week\'s testing approach?',
     choices: [
-      "The longest one your schedule allows",
-      "The same window as a trader you follow",
-      "A window that ends only when you make a profit",
-      "A short, realistic window you can consistently respect"
+      'The 10 clearest winning examples',
+      'Five wins and five losses selected separately',
+      'Only the examples that match your expectations',
+      '10 qualifying examples in the order they happened, including wins and losses'
     ],
-    answer: "D"
+    answer: 'D'
   },
   {
-    question: "Why should you write down your trading window?",
+    question: 'You find a losing example that meets your written rule. What should you do?',
     choices: [
-      "To make the session's boundaries clear before trading",
-      "To guarantee that a setup appears during the session",
-      "To avoid reviewing your trades afterwards",
-      "To make every session the same length forever"
+      'Include it in the test and record its outcome',
+      'Skip it if the next example is a winner',
+      'Move the stop afterwards to turn it into a win',
+      'Replace it with a clearer winning example'
     ],
-    answer: "A"
+    answer: 'A'
   },
   {
-    question: "Your stop time arrives. A new setup appears five minutes later. What fits the plan?",
+    question: 'Which information should you log consistently for every example?',
     choices: [
-      "Take it with a smaller position",
-      "Extend the session if the setup looks strong",
-      "Respect the stop time and skip the new trade",
-      "Take it, then start your review immediately afterwards"
+      'Only the entry and whether the trade won',
+      'Only the losses and what you would change',
+      'Date, entry, stop, outcome and one observation',
+      'Only the examples you would share with another trader'
     ],
-    answer: "C"
+    answer: 'C'
   },
   {
-    question: "What should the 30 minutes after your session be used for?",
+    question: 'When reviewing the test, what should you examine first?',
     choices: [
-      "Looking for one final entry",
-      "Reviewing the session rather than opening new trades",
-      "Trading a different asset",
-      "Recovering any losses from the session"
+      'The biggest winner, to confirm the setup works',
+      'The losses, to check whether they share a cause',
+      'The latest example, ignoring the earlier ones',
+      'The result you expected before starting'
     ],
-    answer: "B"
+    answer: 'B'
   },
   {
-    question: "You feel sharp early in the session but regularly lose focus later. What should you review?",
+    question: 'Several losses appear under similar conditions. What is the most useful next step?',
     choices: [
-      "Whether your window should move towards your sharper hours",
-      "Whether a longer session would help you push through",
-      "Whether later trades should use larger positions",
-      "Whether you should stop recording your focus levels"
+      'Write down the pattern and test one specific adjustment',
+      'Remove those losses from the original test',
+      'Assume avoiding that condition guarantees future wins',
+      'Change the entry, stop and target at the same time'
     ],
-    answer: "A"
+    answer: 'A'
   },
   {
-    question: "Which review note best matches this week's tips?",
+    question: 'Why do the tips recommend changing one thing at a time?',
     choices: [
-      "I should have stayed until the market closed",
-      "I need to catch every move tomorrow",
-      "I will stop only after a winning trade",
-      "I was focused from 9 to 10, then started drifting"
+      'Because the entry rule should never change',
+      'Because one change always improves the result',
+      'Because it removes the need to keep records',
+      'Because multiple changes make it harder to tell which one affected the result'
     ],
-    answer: "D"
+    answer: 'D'
   },
   {
-    question: "You keep breaking a three-hour window but can respect one hour. What is the best adjustment?",
+    question: 'You change both the entry and the target, then the next test improves. What can you conclude?',
     choices: [
-      "Keep three hours and judge yourself only on profit",
-      "Remove the stop time until you become more disciplined",
-      "Start with the one-hour window you can actually respect",
-      "Add more chart alerts to stay engaged for three hours"
+      'The new entry caused the improvement',
+      'The new target caused the improvement',
+      'The comparison does not isolate which change caused the improvement',
+      'Both changes will improve every future trade'
     ],
-    answer: "C"
+    answer: 'C'
   },
   {
-    question: "What is the weekend review for in this week's plan?",
+    question: 'Which written conclusion best follows this week\'s tips?',
     choices: [
-      "Reviewing the week and preparing any window adjustments",
-      "Making up the trading hours you missed",
-      "Choosing Monday's stop time after your first trade",
-      "Deciding how much Monday must earn to cover the week"
+      'Tweak it: test a different target while keeping the other rules unchanged',
+      'Keep it: the best example looked convincing',
+      'Keep it: I removed the losses that did not look right',
+      'Tweak it: change everything and stop keeping the old records'
     ],
-    answer: "A"
+    answer: 'A'
   },
   {
-    question: "A skipped setup moves in your favour after your stop time. What does that mean?",
+    question: 'Your review leads you to drop the setup. How should you treat that decision?',
     choices: [
-      "Your stop time was necessarily wrong",
-      "The move alone does not make respecting your rule a mistake",
-      "You should extend tomorrow's session by the same amount",
-      "You should reopen the platform whenever this happens"
+      'As a failure that should be left out of the journal',
+      'As a useful result of testing, with the reason recorded',
+      'As proof that testing other setups is pointless',
+      'As a reason to select a more favourable sample'
     ],
-    answer: "B"
+    answer: 'B'
   }
 ];
