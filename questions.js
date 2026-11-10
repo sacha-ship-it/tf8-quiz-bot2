@@ -2,103 +2,120 @@
 
 module.exports = [
   {
-    question: 'What should you do before looking for examples on a chart?',
-    choices: [
-      'Find a winning trade and build a rule around it',
-      'Write a rule covering entry, stop and target',
-      'Choose the result you want the test to produce',
-      'Adjust the setup to match the most recent move'
+    question: 'Before entering a trade, what should you define first?',
+    options: [
+      'How much you are willing to lose',
+      'How quickly you want to double your account',
+      'How much the last trader made'
     ],
-    answer: 'B'
+    correctIndex: 0,
+    explanation:
+      'Your maximum planned loss helps you choose a position size that fits your risk limit.'
   },
   {
-    question: 'Which sample follows this week\'s testing approach?',
-    choices: [
-      'The 10 clearest winning examples',
-      'Five wins and five losses selected separately',
-      'Only the examples that match your expectations',
-      '10 qualifying examples in the order they happened, including wins and losses'
+    question:
+      'You have a $10,000 account and choose to risk 1% on a trade. What is your planned risk?',
+    options: [
+      '$10',
+      '$100',
+      '$1,000'
     ],
-    answer: 'D'
+    correctIndex: 1,
+    explanation:
+      '1% of $10,000 is $100. Actual losses can differ because of slippage and execution costs.'
   },
   {
-    question: 'You find a losing example that meets your written rule. What should you do?',
-    choices: [
-      'Include it in the test and record its outcome',
-      'Skip it if the next example is a winner',
-      'Move the stop afterwards to turn it into a win',
-      'Replace it with a clearer winning example'
+    question:
+      'You widen your stop distance but want to keep the same planned dollar risk. What should you do?',
+    options: [
+      'Increase your position size',
+      'Keep your position size unchanged',
+      'Reduce your position size'
     ],
-    answer: 'A'
+    correctIndex: 2,
+    explanation:
+      'A wider stop requires a smaller position to maintain the same planned risk.'
   },
   {
-    question: 'Which information should you log consistently for every example?',
-    choices: [
-      'Only the entry and whether the trade won',
-      'Only the losses and what you would change',
-      'Date, entry, stop, outcome and one observation',
-      'Only the examples you would share with another trader'
+    question:
+      'After three losing trades, what is the most disciplined response?',
+    options: [
+      'Double your next position to recover',
+      'Follow your loss limits and review your decisions',
+      'Take any available setup'
     ],
-    answer: 'C'
+    correctIndex: 1,
+    explanation:
+      'A losing streak does not justify changing your rules or increasing your risk.'
   },
   {
-    question: 'When reviewing the test, what should you examine first?',
-    choices: [
-      'The biggest winner, to confirm the setup works',
-      'The losses, to check whether they share a cause',
-      'The latest example, ignoring the earlier ones',
-      'The result you expected before starting'
+    question: 'What is revenge trading?',
+    options: [
+      'Taking impulsive trades to recover a loss',
+      'Reviewing a losing trade',
+      'Closing a position at your planned stop'
     ],
-    answer: 'B'
+    correctIndex: 0,
+    explanation:
+      'Revenge trading puts the need to recover ahead of the quality of the next decision.'
   },
   {
-    question: 'Several losses appear under similar conditions. What is the most useful next step?',
-    choices: [
-      'Write down the pattern and test one specific adjustment',
-      'Remove those losses from the original test',
-      'Assume avoiding that condition guarantees future wins',
-      'Change the entry, stop and target at the same time'
+    question:
+      'You open several positions that tend to move together. What should you watch?',
+    options: [
+      'Only the risk of the smallest position',
+      'Only the number of positions',
+      'Your combined exposure'
     ],
-    answer: 'A'
+    correctIndex: 2,
+    explanation:
+      'Correlated positions can lose together, concentrating your risk.'
   },
   {
-    question: 'Why do the tips recommend changing one thing at a time?',
-    choices: [
-      'Because the entry rule should never change',
-      'Because one change always improves the result',
-      'Because it removes the need to keep records',
-      'Because multiple changes make it harder to tell which one affected the result'
+    question: 'What is the purpose of a daily loss limit?',
+    options: [
+      'Guarantee a profitable week',
+      'Limit further losses during a difficult session',
+      'Remove the need for individual trade stops'
     ],
-    answer: 'D'
+    correctIndex: 1,
+    explanation:
+      'A daily loss limit creates a stopping point before losses keep accumulating.'
   },
   {
-    question: 'You change both the entry and the target, then the next test improves. What can you conclude?',
-    choices: [
-      'The new entry caused the improvement',
-      'The new target caused the improvement',
-      'The comparison does not isolate which change caused the improvement',
-      'Both changes will improve every future trade'
+    question:
+      'You risk $100 to target a $200 profit. What is the planned reward-to-risk ratio?',
+    options: [
+      '2:1',
+      '1:2',
+      '1:1'
     ],
-    answer: 'C'
+    correctIndex: 0,
+    explanation:
+      'The planned reward is twice the planned risk. This ratio alone does not guarantee a profitable strategy.'
   },
   {
-    question: 'Which written conclusion best follows this week\'s tips?',
-    choices: [
-      'Tweak it: test a different target while keeping the other rules unchanged',
-      'Keep it: the best example looked convincing',
-      'Keep it: I removed the losses that did not look right',
-      'Tweak it: change everything and stop keeping the old records'
+    question:
+      'Your account falls from $10,000 to $9,000. What percentage gain would bring it back to $10,000?',
+    options: [
+      '10%',
+      'About 11.1%',
+      '20%'
     ],
-    answer: 'A'
+    correctIndex: 1,
+    explanation:
+      'You need to gain $1,000 on the remaining $9,000, which is approximately 11.1%.'
   },
   {
-    question: 'Your review leads you to drop the setup. How should you treat that decision?',
-    choices: [
-      'As a failure that should be left out of the journal',
-      'As a useful result of testing, with the reason recorded',
-      'As proof that testing other setups is pointless',
-      'As a reason to select a more favourable sample'
+    question:
+      'Which statement best describes good risk management?',
+    options: [
+      'It prevents every losing trade',
+      'It means winning more trades than you lose',
+      'It limits exposure so individual losses remain manageable'
     ],
-    answer: 'B'
+    correctIndex: 2,
+    explanation:
+      'Risk management helps protect your capital while allowing for the possibility of losing trades.'
   }
 ];
