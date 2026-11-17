@@ -1,102 +1,104 @@
+'use strict';
+
 module.exports = [
   {
-    question: "Before entering a trade, what should you define first?",
+    question: 'What does one candle represent on a 15-minute chart?',
     choices: [
-      "A. How much you are willing to lose",
-      "B. How quickly you want to double your account",
-      "C. How much another trader made",
-      "D. How many trades you want to take"
+      'The last 15 trades',
+      'One 15-minute period',
+      'The first 15 price changes',
+      'The average price over 15 minutes'
     ],
-    answer: "A"
+    answer: 'B'
   },
   {
-    question: "You have a $10,000 account and choose to risk 1% on a trade. What is your planned risk?",
+    question: 'A candle opens at 100 and closes at 104. How large is its body?',
     choices: [
-      "A. $10",
-      "B. $100",
-      "C. $500",
-      "D. $1,000"
+      '2 points',
+      '8 points',
+      'You need the high and low to calculate it',
+      '4 points'
     ],
-    answer: "B"
+    answer: 'D'
   },
   {
-    question: "You widen your stop distance but want to keep the same planned dollar risk. What should you do?",
+    question: 'A candle opens at 105 and closes at 101. What does that tell you?',
     choices: [
-      "A. Increase your position size",
-      "B. Keep your position size unchanged",
-      "C. Reduce your position size",
-      "D. Remove your stop"
+      'Price closed below where it opened',
+      'Price stayed below 105 for the entire candle',
+      'The next candle will close lower',
+      'The low was exactly 101'
     ],
-    answer: "C"
+    answer: 'A'
   },
   {
-    question: "After three losing trades, what is the most disciplined response?",
+    question: 'A candle opens at 100, closes at 104 and reaches a high of 107. How long is its upper wick?',
     choices: [
-      "A. Double your next position to recover",
-      "B. Take any available setup",
-      "C. Ignore your daily loss limit",
-      "D. Follow your loss limits and review your decisions"
+      '7 points',
+      '4 points',
+      '3 points',
+      'The low is needed to calculate it'
     ],
-    answer: "D"
+    answer: 'C'
   },
   {
-    question: "What is revenge trading?",
+    question: 'A candle reaches a high of 112 and a low of 103. What is its full range?',
     choices: [
-      "A. Taking impulsive trades to recover a loss",
-      "B. Reviewing a losing trade",
-      "C. Closing a position at your planned stop",
-      "D. Reducing your exposure after a difficult session"
+      '4 points',
+      '9 points',
+      '15 points',
+      'The closing price is needed to calculate it'
     ],
-    answer: "A"
+    answer: 'B'
   },
   {
-    question: "You open several positions that tend to move together. What should you watch?",
+    question: 'A candle trades above 150 but closes at 148. Which statement is correct?',
     choices: [
-      "A. Only the risk of the smallest position",
-      "B. Your combined exposure",
-      "C. Only the number of winning positions",
-      "D. Only the most recent entry"
+      'Price traded above 150 and ended the period below it',
+      'Price closed above 150',
+      'Price opened at 150',
+      'Price will stay below 150 on the next candle'
     ],
-    answer: "B"
+    answer: 'A'
   },
   {
-    question: "What is the purpose of a daily loss limit?",
+    question: 'A candle has a long lower wick. What can you tell from the wick alone?',
     choices: [
-      "A. Guarantee a profitable week",
-      "B. Remove the need for individual trade stops",
-      "C. Limit further losses during a difficult session",
-      "D. Tell you when to increase your position size"
+      'Price closed at the low of the period',
+      'The next candle will be bullish',
+      'Most trades happened near the low',
+      'Price traded below both the open and close during the period'
     ],
-    answer: "C"
+    answer: 'D'
   },
   {
-    question: "You risk $100 to target a $200 profit. What is the planned reward-to-risk ratio?",
+    question: 'There are two minutes left before a five-minute candle closes. Which value is already fixed?',
     choices: [
-      "A. 1:2",
-      "B. 1:1",
-      "C. 3:1",
-      "D. 2:1"
+      'The closing price',
+      'The final high',
+      'The opening price',
+      'The final low'
     ],
-    answer: "D"
+    answer: 'C'
   },
   {
-    question: "Your account falls from $10,000 to $9,000. What percentage gain would bring it back to $10,000?",
+    question: 'Two candles have the same open, high, low and close. What could still be different?',
     choices: [
-      "A. About 11.1%",
-      "B. 10%",
-      "C. 5%",
-      "D. 20%"
+      'The order in which they reached the high and the low',
+      'The total range of each candle',
+      'The size of each candle body',
+      'Whether each candle closed above its open'
     ],
-    answer: "A"
+    answer: 'A'
   },
   {
-    question: "Which statement best describes good risk management?",
+    question: 'A candle has a 10-point range and a 1-point body. What does that tell you?',
     choices: [
-      "A. It prevents every losing trade",
-      "B. It limits exposure so individual losses remain manageable",
-      "C. It guarantees more winning trades than losing trades",
-      "D. It makes stop-loss orders unnecessary"
+      'Price only moved by 1 point during the period',
+      'The open and close were close together despite a wider range',
+      'The candle closed exactly halfway between its high and low',
+      'The next candle will also have a 10-point range'
     ],
-    answer: "B"
+    answer: 'B'
   }
 ];
