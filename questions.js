@@ -1,104 +1,111 @@
 'use strict';
 
+// TF8 - Season 1 - Quiz #4
+// Theme: Review Your Trading
+// Correct answers use letters A-D, matching the previous TF8 question file.
+// Educational references:
+// https://www.cmegroup.com/education/courses/trading-psychology/the-mathematics-of-trading-success
+// https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-14
+
 module.exports = [
   {
-    question: 'What does one candle represent on a 15-minute chart?',
+    question: 'Which information do you need to assess profitability beyond win rate?',
     choices: [
-      'The last 15 trades',
-      'One 15-minute period',
-      'The first 15 price changes',
-      'The average price over 15 minutes'
+      'Only the number of winning trades',
+      'Average win, average loss and trading costs',
+      'Only the biggest winning trade',
+      'Only the number of trading sessions'
     ],
     answer: 'B'
   },
   {
-    question: 'A candle opens at 100 and closes at 104. How large is its body?',
+    question: 'A test has 40% winners at +2R and 60% losers at -1R. What is the average result per trade, before costs?',
     choices: [
-      '2 points',
-      '8 points',
-      'You need the high and low to calculate it',
-      '4 points'
+      '-0.20R',
+      '+0.40R',
+      '+1.00R',
+      '+0.20R'
     ],
     answer: 'D'
   },
   {
-    question: 'A candle opens at 105 and closes at 101. What does that tell you?',
+    question: 'You have six wins of $100 and four losses of $150. What is the total result before costs?',
     choices: [
-      'Price closed below where it opened',
-      'Price stayed below 105 for the entire candle',
-      'The next candle will close lower',
-      'The low was exactly 101'
+      '$0',
+      '+$200',
+      '+$600',
+      '-$150'
     ],
     answer: 'A'
   },
   {
-    question: 'A candle opens at 100, closes at 104 and reaches a high of 107. How long is its upper wick?',
+    question: 'A trade followed your tested rules but lost. What should your review distinguish?',
     choices: [
-      '7 points',
-      '4 points',
-      '3 points',
-      'The low is needed to calculate it'
+      'Whether someone else made money on the same move',
+      'Whether you could hide the loss from your journal',
+      'Whether you followed the plan, separately from the financial outcome',
+      'Whether changing the original record would improve your statistics'
     ],
     answer: 'C'
   },
   {
-    question: 'A candle reaches a high of 112 and a low of 103. What is its full range?',
+    question: 'A setup produces three wins in a row. What can you conclude from those trades alone?',
     choices: [
-      '4 points',
-      '9 points',
-      '15 points',
-      'The closing price is needed to calculate it'
+      'It will remain profitable in every market condition',
+      'The sample is too small to establish reliable long-term performance',
+      'The next trade cannot lose',
+      'Trading costs no longer matter'
     ],
     answer: 'B'
   },
   {
-    question: 'A candle trades above 150 but closes at 148. Which statement is correct?',
+    question: 'Account equity falls from a peak of $10,000 to $8,000. What is the drawdown from that peak?',
     choices: [
-      'Price traded above 150 and ended the period below it',
-      'Price closed above 150',
-      'Price opened at 150',
-      'Price will stay below 150 on the next candle'
+      '20%',
+      '25%',
+      '8%',
+      '2%'
     ],
     answer: 'A'
   },
   {
-    question: 'A candle has a long lower wick. What can you tell from the wick alone?',
+    question: 'After falling from $10,000 to $8,000, what percentage gain is needed to return to $10,000?',
     choices: [
-      'Price closed at the low of the period',
-      'The next candle will be bullish',
-      'Most trades happened near the low',
-      'Price traded below both the open and close during the period'
+      '10%',
+      '20%',
+      '50%',
+      '25%'
     ],
     answer: 'D'
   },
   {
-    question: 'There are two minutes left before a five-minute candle closes. Which value is already fixed?',
+    question: 'A stock stop-market sell order is triggered during a sharp price gap. Which statement is correct?',
     choices: [
-      'The closing price',
-      'The final high',
-      'The opening price',
-      'The final low'
+      'It must execute at the exact stop price',
+      'It automatically becomes a limit order',
+      'The execution price can be lower than the stop price',
+      'The order guarantees the planned maximum loss'
     ],
     answer: 'C'
   },
   {
-    question: 'Two candles have the same open, high, low and close. What could still be different?',
+    question: 'Which note gives you a specific behaviour to measure in your next trading review?',
     choices: [
-      'The order in which they reached the high and the low',
-      'The total range of each candle',
-      'The size of each candle body',
-      'Whether each candle closed above its open'
-    ],
-    answer: 'A'
-  },
-  {
-    question: 'A candle has a 10-point range and a 1-point body. What does that tell you?',
-    choices: [
-      'Price only moved by 1 point during the period',
-      'The open and close were close together despite a wider range',
-      'The candle closed exactly halfway between its high and low',
-      'The next candle will also have a 10-point range'
+      'I need to win every trade next week',
+      'Record whether I completed my written entry checklist before each trade',
+      'Ignore losing trades if the weekly result is positive',
+      'Judge every decision only by whether it made money'
     ],
     answer: 'B'
+  },
+  {
+    question: 'Price has bounced from a support level twice. What do those past bounces establish?',
+    choices: [
+      'The next bounce is guaranteed',
+      'Price cannot trade below that level',
+      'The level removes the risk of a long position',
+      'Price previously reacted there, but the next outcome remains uncertain'
+    ],
+    answer: 'D'
   }
 ];
